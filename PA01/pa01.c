@@ -6,7 +6,6 @@
 // in this assignment. Including the definitions allows you to use
 // the functions in this file.
 #include "answer01.h"
-#include "answer01.c"
 
 void printArray(int * array, int len)
 {

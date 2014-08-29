@@ -1,0 +1,10 @@
+No symbol table is loaded.  Use the "file" command.
+Make breakpoint pending on future shared library load? (y or [n]) Breakpoint 1 (pa01.c:59) pending.
+Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA01/answer 
+
+Program exited normally.
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.132.el6_5.3.x86_64
+No symbol table is loaded.  Use the "file" command.
+The program is not being run.
+The program is not being run.
+The program is not being run.
