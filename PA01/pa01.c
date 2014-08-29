@@ -6,6 +6,7 @@
 // in this assignment. Including the definitions allows you to use
 // the functions in this file.
 #include "answer01.h"
+#include "answer01.c"
 
 void printArray(int * array, int len)
 {
@@ -94,11 +95,46 @@ void test_01_arrayCountNegative()
 
 int main(int argc, char * * argv)
 {
+    int isInc = 1;
+    int array1[4] = { 1, 4, -5, 4 };
+    int array2[0] = {};
+    int array3[5] = { 1, 1, 2, 3, 3 };
+    int array4[4] = { 1, 2, 0, 4 };
+    int haystack[] = { 1, 4, -5, 4 };
+    int array[] = { 3, 4, -5 };
+
     printf("Welcome to ECE264, we are working on PA01.\n\n");
 
     // Uncomment to run two example (incomplete) testcases.
-    //test_00_arraySum();
-    //test_01_arrayCountNegative();
+    test_00_arraySum();
+    test_01_arrayCountNegative();
+    
+    isInc = arrayIsIncreasing(array1, 4);
+    printf("[1, 4, -5, 4], isInc = %d\n",isInc);
+    isInc = arrayIsIncreasing(array2, 0);
+    printf("[], isInc = %d\n",isInc);
+    isInc = arrayIsIncreasing(array3, 5);
+    printf("[1, 1, 2, 3, 3], isInc = %d\n",isInc);
+    isInc = arrayIsIncreasing(array4, 4);
+    printf("[1, 2, 0, 4], isInc = %d\n",isInc);
+    isInc = arrayIsIncreasing(NULL, 0);
+    printf("NULL, isInc = %d\n\n",isInc); 
+
+    int x1 = arrayIndexRFind(1, haystack, 4);
+    printf("x1 = %d, expected = 0\n",x1);
+    int x2 = arrayIndexRFind(4, haystack, 4);
+    printf("x2 = %d, expected = 3\n",x2);
+    int x3 = arrayIndexRFind(6, haystack, 4);
+    printf("x3 = %d, expected = -1\n\n",x3);
+
+    int ind1 = arrayFindSmallest(array1, 4);
+    printf("smallest = %d, expected = 2\n",ind1);
+    int ind2 = arrayFindSmallest(array3, 5);
+    printf("smallest = %d, expected = 0\n",ind2);
+    int ind3 = arrayFindSmallest(array, 3);
+    printf("smallest = %d, expected = 2\n",ind3);
+    int ind4 = arrayFindSmallest(array2, 0);
+    printf("smallest = %d, expected = 0\n\n",ind4);
 
     return EXIT_SUCCESS;
 }
