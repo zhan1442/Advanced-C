@@ -1,24 +1,12 @@
-/** 
- * Length of C string 'str', excluding the terminating null byte ('\0')
- * 
- * Examples:
- * my_strlen("abc"); // 3
- * my_strlen("");   // 0
- * my_strlen(NULL); // error -- undefined behavior. You do not need to 
- *                  // consider this case. See the README -- FAQ for more info.
- */
+#include "answer02.h"
+#include<stdio.h>
+
 size_t my_strlen(const char * str) {
-	int pos = -1;
+	int pos = -1;	
 	while(str[++pos] != '\0') {}
 	return pos;
 }
 
-/**
- * Count the number of occurrences of character 'ch' in C string 'str'
- *
- * Examples: 
- * my_countchar("foo", 'o'); // 2
- */
 int my_countchar(const char * str, char ch) {
 	int n = 0;
 	int pos = -1;
@@ -30,138 +18,159 @@ int my_countchar(const char * str, char ch) {
 	return n;
 }
 
-/**
- * Return a pointer to the first occurance of character 'ch' in C string 'str'
- * Return NULL if 'ch' is not found.
- *
- * Note that the terminating '\0' character is considered to be part of the 
- * string. Thus, if 'ch' is specified as '\0', then return a pointer to the
- * null terminator of the string.
- *
- * Examples:
- * const char * str = "Hello World!";
- * printf("'%s'\n", my_strchr(str, 'o')); // prints "'o World!'\n"
- * printf("'%s'\n", my_strchr(str, 'z')); // prints "'(null)'\n"
- *                                        // i.e., my_strchr(str, 'z') == NULL
- * printf("'%s'\n", my_strchr(str, '\0')); // prints "''\n"
- *
- * Please read the README FAQ before attempting this function.
- */
-char * _my_strrchr(const char * str, int ch, int is_left) {
+char * my_strchr(const char * str, int ch) {
 	int pos = -1;
-	int match_idx = NULL;
-	while(str[++pos] != '\0') {
-		if(str[pos] == ch) {
-			match_idx = pos;
-			if(is_left == 1) {
-				break;
+	int len = my_strlen(str);
+	const char * match_idx = NULL;
+		while(str[++pos] != '\0' && match_idx == NULL) {
+			if(str[pos] == ch) {
+				 match_idx = &str[pos];
 			}
 		}
-	}
-	return match_idx;
-}
-char * my_strchr(const char * str, int ch) {
-	return _my_strrchr(str, ch, 1);
+		if (ch == '\0') {
+			return (char *) str + len;
+		}
+		else {
+			return (char *) match_idx;
+		}
 }
 
-/** 
- * Same as my_strchr(...), except it searches from the right-hand-side 
- *
- * Examples:
- * const char * str = "Hello World!";
- * printf("'%s'\n", my_strrchr(str, 'o')); // prints "'orld!'\n"
- * printf("'%s'\n", my_strrchr(str, 'z')); // prints "'(null)'\n"
- *                                         // i.e., my_strrchr(str, 'z') == NULL
- * printf("'%s'\n", my_strrchr(str, '\0')); // prints "''\n" *
- */
 char * my_strrchr(const char * str, int ch) {
-	return _my_strrchr(str, ch, 0);
+	int pos = my_strlen(str) - 1;
+	int len = my_strlen(str);
+	const char * match_idx = NULL;
+	if (pos < 0) {
+		pos = 0;
+	}
+	while(pos >= 0 && match_idx == NULL) {
+		if(str[pos] == ch) {
+			match_idx = &str[pos];
+		}
+		pos--;
+		}
+	if (ch == '\0') {
+		return (char *) str + len;
+	}  
+	else {
+		return (char *) match_idx;
+	}
 }
 
-/** Finds the first occurance of C-string 'needle' in C-string 'haystack'
- * Return 'haystack' when 'needle' is the empty string (ie, "").
- * The terminating null bytes are not compared.
- *
- * Examples:
- * const char * str = "Hello World!";
- * printf("'%s'\n", my_strstr(str, "World")); // prints "'World!'\n"
- * printf("'%s'\n", my_strstr(str, ""));      // prints "'Hello World!'\n"
- * printf("'%s'\n", my_strstr(str, "hello")); // prints "'(null)'\n"
- *                                      // i.e., my_strstr(str, "hello") == NULL
- */
+
+
 char * my_strstr(const char * haystack, const char * needle) {
+	int posh = -1;
+	int posn = 0;
+	int count = 0;
+	int n = 0;
+	int hlength = my_strlen(haystack);
+	int nlength = my_strlen(needle);
+	while (++posh < hlength && count < nlength) {
+		if (haystack[posh] == needle[posn]) {
+			count++;
+			posn++;
+		}
+		else {
+			if (haystack[posh] == needle[0]) {
+				count = 1;
+				posn = 1;
+			}
+			else {
+				count = 0;
+				posn = 0;
+			}
+		}
+		if  (nlength == count) {
+			n = posh - count + 1;
+		}
+	}
+	
+	
+	if (nlength == 0) {
+		return (char *) haystack;
+	}
+	else if (nlength == count) {
+		return (char *) haystack + n;
+	}
+	else {
+		return NULL;
+	}
 }
 
-/**
- * Copys C-string 'src' (including the null-byte terminator) into the memory 
- * pointed to by 'dest'. The strings must not overlap, and 'dest' must be large
- * enough to contain 'src', *including* the terminating null-byte.
- *
- * Returns 'dest'
- *
- * Examples:
- * const char * str = "Hello World!"; // strlen(str) == 12, but 13 bytes with \0
- * char buffer[50];
- * printf("%s\n", my_strcpy(buffer, str)); // prints "Hello World!\n"
- */
-char * my_strcpy(char * dest, const char * src);
 
-/**
- * Append C-string 'src' to C-string 'dest'. A precondition is 'Dest' must be 
- * large enough to contain both 'dest' and 'src', *including* the terminating
- * null-byte.
- *
- * Returns 'dest'
- *
- * Examples:
- * char buffer[50];
- * my_strcpy(buffer, "Hello ");
- * printf("%s\n", my_strcat(buffer, "Zippy!")); // prints "Hello Zippy!"
- */
-char * my_strcat(char * dest, const char * src);
 
-/**
- * Returns 1 when 'ch' is a whitespace character, and 0 otherwise.
- *
- * By default, white-space characters are: space ' ', form-feed '\f', 
- * newline '\n', carriage return '\r', horizontal tab '\t' and vertical tab '\v'
- *
- * See the README FAQ for more information.
- *
- * Examples:
- * my_isspace(' '); // 1
- * my_isspace('\f'); // 1
- * my_isspace('\n'); // 1
- * my_isspace('\r'); // 1
- * my_isspace('\t'); // 1
- * my_isspace('\v'); // 1
- * char ch;
- * for(ch = 'A'; ch <= 'Z'; ++ch)
- *    my_isspace(ch); // always 0
- */
-int my_isspace(int ch);
+char * my_strcpy(char * dest, const char * src) {
+	int pos;
+	int length = my_strlen(src);	
+	for (pos = 0; pos <= length; pos++) {
+		dest[pos] = src[pos];
+	}
+	return dest;
+}
 
-/**
- * Convert the initial portion of 'str' to an integer.
- *
- * Implement my_atoi(str) as follows:
- * (1) Increment str to skip all white-space characters as defined by 
- * my_isspace(...)
- * (2) If there is a '-' sign, note that 'str' is a negative number, and 
- * increment str past the minus sign.
- * (3) Initialize a return value "ret" to 0. (int ret = 0)
- * (4) While '0' <= *str <= '9':
- *     (4.a) Multiply ret by 10
- *     (4.b) Add (*str - '0') to ret
- *     (4.c) Increment str
- * (5) If there was a minus sign, return -ret. Otherwise return ret.
- *
- * Examples:
- * my_atoi("0"); // 0
- * my_atoi("-12"); // -12
- * my_atoi("15th of March would be the ides."); // 15
- * my_atoi("4 months to Summer."); // 4
- * my_atoi("\n\f\t\v\r 6 white space characters handled correctly."); // 6
- * my_atoi("garbage should yield 0"); // 0
- */
-int my_atoi(const char * str);
+char * my_strcat(char * dest, const char * src) {
+	int pos;
+	int spos = 0;
+	int dlength = my_strlen(dest);
+    int length = my_strlen(src);
+	for (pos = dlength; pos - dlength <= length; pos++) {
+		dest[pos] = src[spos++];
+	}   
+	return dest;
+}
+
+int my_isspace(int ch) {
+	if (ch == ' ' || ch == '\f' || ch == '\n' || ch == '\r' || ch == '\t' || ch == '\v')
+		return 1;
+	else
+		return 0;
+}
+
+int my_atoi(const char * str) {
+	int pos = 0;
+	int ret = 0;
+	int sign = 1;
+	while (my_isspace(str[pos])) {
+		pos++;
+	}
+	if (str[pos] == '-') {
+		sign = -1;
+		pos++;
+	}
+	while (str[pos]=='0'||str[pos]=='1'||str[pos]=='2'||str[pos]=='3'||str[pos]=='4'||str[pos]=='5'||str[pos]=='6'||str[pos]=='7'||str[pos]=='8'||str[pos]=='9') {
+		if (str[pos] == '0') {
+			ret = ret*10 + 0;
+		}
+		else if (str[pos] == '1') {
+			ret = ret*10 + 1;
+		}
+		else if (str[pos] == '2') {
+			ret = ret*10 + 2;
+		}
+		else if (str[pos] == '3') {
+			ret = ret*10 + 3;
+		}
+		else if (str[pos] == '4') {
+			ret = ret*10 + 4;
+		}
+		else if (str[pos] == '5') {
+			ret = ret*10 + 5;
+		}
+		else if (str[pos] == '6') {
+			ret = ret*10 + 6;
+		}
+		else if (str[pos] == '7') {
+			ret = ret*10 + 7;
+		}
+		else if (str[pos] == '8') {
+			ret = ret*10 + 8;
+		}
+		else if (str[pos] == '9') {
+			ret = ret*10 + 9;
+		}
+		pos++;
+	}
+	ret = ret * sign;
+	return ret;
+}
+ 
