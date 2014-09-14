@@ -1,0 +1,38 @@
+Breakpoint 1 at 0x4006d1: file answer03.c, line 19.
+Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA03/pa03 
+
+Breakpoint 1, strcat_ex (dest=0x7fffffffe2d8, n=0x7fffffffe2d4, src=0x4008ef "world!") at answer03.c:19
+warning: Source file is more recent than executable.
+19			strcpy(p, *dest);
+The program being debugged has been started already.
+Start it from the beginning? (y or n) Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA03/pa03 
+
+Breakpoint 1, strcat_ex (dest=0x7fffffffe2d8, n=0x7fffffffe2d4, src=0x4008ef "world!") at answer03.c:19
+19			strcpy(p, *dest);
+Continuing.
+
+Program received signal SIGSEGV, Segmentation fault.
+__strlen_sse42 () at ../sysdeps/x86_64/multiarch/strlen-sse4.S:32
+32		pcmpeqb	(%rdi), %xmm1
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
+Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA03/pa03 
+
+Breakpoint 1, strcat_ex (dest=0x7fffffffe2d8, n=0x7fffffffe2d4, src=0x4008ef "world!") at answer03.c:19
+19			strcpy(p, *dest);
+21			*dest = p;
+22			strcat(*dest, src);
+23			return *dest;  
+29	}
+main (argc=1, argv=0x7fffffffe3d8) at pa03.c:16
+16		printf("%s\n",strcat_ex(&p,&y,b));
+
+Program received signal SIGSEGV, Segmentation fault.
+__strlen_sse42 () at ../sysdeps/x86_64/multiarch/strlen-sse4.S:32
+32		pcmpeqb	(%rdi), %xmm1
+A debugging session is active.
+
+	Inferior 1 [process 15692] will be killed.
+
+Quit anyway? (y or n) 

@@ -5,17 +5,28 @@
 
 int main(int argc, char * * argv)
 {
-	char * p = NULL;
-	char * a = malloc(sizeof(char)*6);
-	a = "hello ";
+	char * p = (char *) malloc(sizeof(char)*4);
+	strcpy(p, "zzz");
+	char * a = (char *) malloc(sizeof(char)*7);
+	strcpy(a, "hello ");
+	char * c = (char *) malloc(sizeof(char)*3);
+	strcpy(c, "");
 	char * b = "world!";
-	int x = 6;
-	int y = 0;
-	int z = 13;
+
+	int x = 7;
+	int y = 4;
+	int z = 3;
 	printf("%s\n",strcat_ex(&a,&x, b));
 	printf("%s\n",strcat_ex(&p,&y,b));
-	printf("%s\n",strcat_ex(&a,&z, b));
-
+	printf("%s\n",strcat_ex(&a,&x, b));
+	printf("%s\n",strcat_ex(&a,&x, b));
+	printf("%s\n",strcat_ex(&a,&x, b));
+	printf("%s\n",strcat_ex(&a,&x, b));
+	printf("%s\n",strcat_ex(&a,&x, b));
+	printf("%s\n",strcat_ex(&a,&x, b));
+	printf("%s\n",strcat_ex(&a,&x, b));
+	printf("%s\n",strcat_ex(&a,&x, b));
+	printf("%s\n",strcat_ex(&c,&z, b));
 	return 0;
 		
 }
