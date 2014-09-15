@@ -12,7 +12,6 @@ int main(int argc, char * * argv)
 	char * c = (char *) malloc(sizeof(char)*3);
 	strcpy(c, "");
 	char * b = "world!";
-
 	int x = 7;
 	int y = 4;
 	int z = 3;
@@ -27,6 +26,27 @@ int main(int argc, char * * argv)
 	printf("%s\n",strcat_ex(&a,&x, b));
 	printf("%s\n",strcat_ex(&a,&x, b));
 	printf("%s\n",strcat_ex(&c,&z, b));
-	return 0;
+
+	const char * d = "abcaf\ndefsdfv\rehisdfbsdf fklsdf hweicfow cmn\nbfvdfv";
+	const char * dim = "\n\f\r ";
+	char * * po;
+	int len;
+	po = explode(d, dim, &len);
+	int i;
+	for (i = 0; i < len; i++){
+		printf("po[%d] = %s\n",i,po[i]);
+	}
+    sortStringArray(po, len);
+	char * pa;
+	char * glue = ", ";
+	pa = implode(po,len,glue);
+	printf("pa = %s\n",pa);
+
+	sortStringCharacters(pa);
+	printf("pa = %s\n",pa);
+
+	
+	return 0; 
+
 		
 }
