@@ -69,7 +69,6 @@ char * implode(char * * strArr, int len, const char * glue)
 		if (i < len - 1)
 		strcat_ex(&str, &x, glue);
 	}
-
 	return str;
 }
 
@@ -100,8 +99,11 @@ int cmpstr(void const *a, void const *b) {
 
 void destroyStringArray(char * * strArr, int len)
 {
-
-
+	int i;
+	for (i = 0; i < len; i++) {
+		free(strArr[i]);
+	}
+	free(strArr);
 }
 
 

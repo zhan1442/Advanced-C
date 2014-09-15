@@ -26,6 +26,9 @@ int main(int argc, char * * argv)
 	printf("%s\n",strcat_ex(&a,&x, b));
 	printf("%s\n",strcat_ex(&a,&x, b));
 	printf("%s\n",strcat_ex(&c,&z, b));
+	free(p);
+	free(a);
+	free(c);
 
 	const char * d = "abcaf\ndefsdfv\rehisdfbsdf fklsdf hweicfow cmn\nbfvdfv";
 	const char * dim = "\n\f\r ";
@@ -45,7 +48,10 @@ int main(int argc, char * * argv)
 	sortStringCharacters(pa);
 	printf("pa = %s\n",pa);
 
-	
+	free(pa);
+
+	destroyStringArray(po, len);
+		
 	return 0; 
 
 		
