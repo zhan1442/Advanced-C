@@ -10,10 +10,12 @@ char * strcat_ex(char * * dest, int * n, const char * src)
 		char * p;
 		if (* dest == NULL) {
 			p = (char *) malloc(sizeof(char) * (1 + 2 * strlen(src)));
+			p[0] = '\0';
 			* n = 1 + 2 * strlen(src);
 		}
 		else {
 			p = (char *) malloc(sizeof(char) * (1 + 2 * (strlen(*dest) + strlen(src))));
+			p[0] = '\0';
 			* n = 1 + 2 * (strlen(*dest) + strlen(src));
 			strcpy(p, * dest);
 		}
@@ -47,6 +49,7 @@ char * * explode(const char * str, const char * delims, int * arrLen)
 		if (strchr(delims, str[i]) != NULL) {
 			strarr[arrind] = (char *) malloc(sizeof(char)*(i - last + 1));
 			memcpy(strarr[arrind], str + last, i - last);
+			strarr[arrind][i-last] = '\0';
 			last = i + 1;
 			arrind++;
 		}
@@ -54,6 +57,7 @@ char * * explode(const char * str, const char * delims, int * arrLen)
 
 	strarr[arrind] = (char *) malloc(sizeof(char)*(i - last + 1));
 	memcpy(strarr[arrind], str + last, i - last);
+	strarr[arrind][i-last] = '\0';
 
 	return(strarr);
 
@@ -62,8 +66,8 @@ char * * explode(const char * str, const char * delims, int * arrLen)
 char * implode(char * * strArr, int len, const char * glue)
 {
 	int i;
-	char * str = malloc(sizeof(char) * 1);
-	int x = 1;
+	char * str = NULL;
+	int x = 0;
 	for (i = 0; i < len; i++) {
 		strcat_ex(&str, &x, strArr[i]);
 		if (i < len - 1)
