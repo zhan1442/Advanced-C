@@ -18,13 +18,9 @@ int main(int argc, char * * argv)
 	}	
 	
 	FILE * file = NULL;
-	char str;	
-	for(ind = 1; ind < argc; ind++){
-		if(strcmp(argv[ind],"-") == 0){
-			ind++;
-			break;	
-		}
-		file = fopen(argv[ind],"r");
+	char str;
+	if(argc == 1){
+		file = stdin;
 		if (file != NULL){
 			while(!feof(file)){
 				fscanf(file,"%c",&str);
@@ -32,18 +28,36 @@ int main(int argc, char * * argv)
 					printf("%c",str);
 				}
 			}
-			fclose(file);
-		}
-		else{
-			fprintf(stderr,"cat cannot open %s\n",argv[ind]);
-			return EXIT_FAILURE;
 		}
 	}
-	if(strcmp(argv[ind-1],"-") == 0){
-		for( ; ind < argc; ind++){
-			printf("%s ",argv[ind]);
+	for(ind = 1; ind < argc; ind++){
+		if(strcmp(argv[ind],"-") == 0){
+			file = stdin;
+			if (file != NULL){
+				while(!feof(file)){
+					fscanf(file,"%c",&str);
+					if(!feof(file)){
+						printf("%c",str);
+					}
+				}
+			}
 		}
-		printf("\n");
+		else {
+			file = fopen(argv[ind],"r");
+			if (file != NULL){
+				while(!feof(file)){
+					fscanf(file,"%c",&str);
+					if(!feof(file)){
+						printf("%c",str);
+					}
+				}
+				fclose(file);
+			}
+			else{
+				fprintf(stderr,"cat cannot open %s\n",argv[ind]);
+				return EXIT_FAILURE;
+			}
+		}
 	}
 
 	return EXIT_SUCCESS;
