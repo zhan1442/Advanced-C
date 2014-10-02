@@ -1,69 +1,68 @@
-==22206== Memcheck, a memory error detector
-==22206== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==22206== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==22206== Command: cat-lite 1.txt - hjbjhvb ghvhgvhg
-==22206== Parent PID: 31366
-==22206== 
---22206-- 
---22206-- Valgrind options:
---22206--    --tool=memcheck
---22206--    --leak-check=full
---22206--    --verbose
---22206--    --log-file=memcheck.log
---22206-- Contents of /proc/version:
---22206--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
---22206-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---22206-- Page sizes: currently 4096, max supported 4096
---22206-- Valgrind library directory: /usr/lib64/valgrind
---22206-- Reading syms from /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA04/cat-lite
---22206-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---22206--    object doesn't have a dynamic symbol table
---22206-- Reading syms from /lib64/ld-2.12.so
---22206--   Considering /usr/lib/debug/.build-id/57/bf668f99b7f5917b8d55fbb645173c9a644575.debug ..
---22206--   .. build-id is valid
---22206-- Scheduler: using generic scheduler lock implementation.
---22206-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==22206== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-22206-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
-==22206== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-22206-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
-==22206== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-22206-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
-==22206== 
-==22206== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==22206== don't want to do, unless you know exactly what you're doing,
-==22206== or are doing some strange experiment):
-==22206==   /usr/lib64/valgrind/../../bin/vgdb --pid=22206 ...command...
-==22206== 
-==22206== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==22206==   /path/to/gdb cat-lite
-==22206== and then give GDB the following command
-==22206==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=22206
-==22206== --pid is optional if only one valgrind process is running
-==22206== 
---22206-- REDIR: 0x3f79a17530 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---22206-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---22206-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---22206-- REDIR: 0x3f79a173a0 (index) redirected to 0x4a07bf0 (index)
---22206-- REDIR: 0x3f79a17420 (strcmp) redirected to 0x4a08530 (strcmp)
---22206-- Reading syms from /lib64/libc-2.12.so
---22206--   Considering /usr/lib/debug/.build-id/07/b5ce35eba864a01b697f5ca117e94b9248064f.debug ..
---22206--   .. build-id is valid
---22206-- REDIR: 0x3f79e84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---22206-- REDIR: 0x3f79e86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---22206-- REDIR: 0x3f79e82c40 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
---22206-- REDIR: 0x3f79e7f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---22206-- REDIR: 0x3f79f28290 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
---22206-- REDIR: 0x3f79e7a640 (malloc) redirected to 0x4a0696c (malloc)
---22206-- REDIR: 0x3f79e7b520 (free) redirected to 0x4a06369 (free)
---22206-- REDIR: 0x3f79e8aaf0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
-==22206== 
-==22206== HEAP SUMMARY:
-==22206==     in use at exit: 0 bytes in 0 blocks
-==22206==   total heap usage: 1 allocs, 1 frees, 568 bytes allocated
-==22206== 
-==22206== All heap blocks were freed -- no leaks are possible
-==22206== 
-==22206== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
---22206-- 
---22206-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---22206-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==22206== 
-==22206== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+==10475== Memcheck, a memory error detector
+==10475== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==10475== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==10475== Command: cat-lite 1.txt
+==10475== Parent PID: 28245
+==10475== 
+--10475-- 
+--10475-- Valgrind options:
+--10475--    --tool=memcheck
+--10475--    --leak-check=full
+--10475--    --verbose
+--10475--    --log-file=memcheck.log
+--10475-- Contents of /proc/version:
+--10475--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--10475-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--10475-- Page sizes: currently 4096, max supported 4096
+--10475-- Valgrind library directory: /usr/lib64/valgrind
+--10475-- Reading syms from /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA04/cat-lite
+--10475-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--10475--    object doesn't have a dynamic symbol table
+--10475-- Reading syms from /lib64/ld-2.12.so
+--10475--   Considering /usr/lib/debug/.build-id/57/bf668f99b7f5917b8d55fbb645173c9a644575.debug ..
+--10475--   .. build-id is valid
+--10475-- Scheduler: using generic scheduler lock implementation.
+--10475-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==10475== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-10475-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==10475== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-10475-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==10475== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-10475-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==10475== 
+==10475== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==10475== don't want to do, unless you know exactly what you're doing,
+==10475== or are doing some strange experiment):
+==10475==   /usr/lib64/valgrind/../../bin/vgdb --pid=10475 ...command...
+==10475== 
+==10475== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==10475==   /path/to/gdb cat-lite
+==10475== and then give GDB the following command
+==10475==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=10475
+==10475== --pid is optional if only one valgrind process is running
+==10475== 
+--10475-- REDIR: 0x3f79a17530 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--10475-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--10475-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--10475-- REDIR: 0x3f79a173a0 (index) redirected to 0x4a07bf0 (index)
+--10475-- REDIR: 0x3f79a17420 (strcmp) redirected to 0x4a08530 (strcmp)
+--10475-- Reading syms from /lib64/libc-2.12.so
+--10475--   Considering /usr/lib/debug/.build-id/07/b5ce35eba864a01b697f5ca117e94b9248064f.debug ..
+--10475--   .. build-id is valid
+--10475-- REDIR: 0x3f79e84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--10475-- REDIR: 0x3f79e86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--10475-- REDIR: 0x3f79e82c40 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--10475-- REDIR: 0x3f79e7f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--10475-- REDIR: 0x3f79f28290 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--10475-- REDIR: 0x3f79e7a640 (malloc) redirected to 0x4a0696c (malloc)
+--10475-- REDIR: 0x3f79e7b520 (free) redirected to 0x4a06369 (free)
+==10475== 
+==10475== HEAP SUMMARY:
+==10475==     in use at exit: 0 bytes in 0 blocks
+==10475==   total heap usage: 1 allocs, 1 frees, 568 bytes allocated
+==10475== 
+==10475== All heap blocks were freed -- no leaks are possible
+==10475== 
+==10475== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--10475-- 
+--10475-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--10475-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==10475== 
+==10475== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
