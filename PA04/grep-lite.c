@@ -19,16 +19,16 @@ int main(int argc, char * * argv)
 	int ln = 0;
 	int quiet = 0;
 	for(ind = 1; ind < argc - 1; ind++){
-		if(strcmp(argv[ind],"-v") == 0){
+		if(strcmp(argv[ind],"-v") == 0 || strcmp(argv[ind],"--invert-match") == 0){
 			pnmatch = 1;
 		}
-		if(strcmp(argv[ind],"-n") == 0){
+		if(strcmp(argv[ind],"-n") == 0 || strcmp(argv[ind],"--line-number") == 0){
 			ln = 1;
 		}
-		if(strcmp(argv[ind],"-q") == 0){
+		if(strcmp(argv[ind],"-q") == 0 || strcmp(argv[ind],"--quiet") == 0){
 			quiet = 1;
 		}
-		if(strcmp(argv[ind],"-v") != 0 && strcmp(argv[ind],"-n") != 0 && strcmp(argv[ind],"-q") != 0){
+		if(strcmp(argv[ind],"-v") != 0 && strcmp(argv[ind],"--invert-match") != 0 && strcmp(argv[ind],"-n") != 0 && strcmp(argv[ind],"--line-number") != 0 && strcmp(argv[ind],"-q") != 0 && strcmp(argv[ind],"--quiet") != 0){
 			fprintf(stderr,"ERROR:bogus command-line arguments are passed\n");
 			return 2;
 		}

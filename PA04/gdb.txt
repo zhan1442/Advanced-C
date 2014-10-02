@@ -1,0 +1,11 @@
+Breakpoint 1 at 0x4008aa: file cat-lite.c, line 40.
+Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA04/cat-lite 
+
+Program received signal SIGINT, Interrupt.
+0x0000003f79edb430 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:82
+82	T_PSEUDO (SYSCALL_SYMBOL, SYSCALL_NAME, SYSCALL_NARGS)
+A debugging session is active.
+
+	Inferior 1 [process 2867] will be killed.
+
+Quit anyway? (y or n) 
