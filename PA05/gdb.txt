@@ -1,0 +1,30 @@
+Breakpoint 1 at 0x4006d8: file answer05.c, line 20.
+Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA05/a.out 
+
+Breakpoint 1, partitionAll (value=5) at answer05.c:20
+20		partition(arr, 0, value);
+21		free (arr);
+22	}
+main () at pa05.c:12
+12		printf("\nodd\n");
+13		partitionOdd(a);
+14		printf("\nEven\n");
+15		partitionEven(a);
+16		printf("\nincreasing\n");
+17		partitionIncreasing(a);
+18		printf("\ndecreasing\n");
+Undefined command: "nn".  Try "help".
+19		partitionDecreasing(a);
+20		printf("\nodd and Even\n");
+21		partitionOddAndEven(a);
+22		printf("\nprime\n");
+23		partitionPrime(a);
+24		return 0;
+The program being debugged has been started already.
+Start it from the beginning? (y or n) Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA05/a.out 
+
+Breakpoint 1, partitionAll (value=5) at answer05.c:20
+20		partition(arr, 0, value);
+Continuing.
+
+Program exited normally.

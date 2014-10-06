@@ -10,6 +10,8 @@ void partitionE(int * arr, int ind, int left);
 void partitionI(int * arr, int ind, int left);
 void partitionD(int * arr, int ind, int left);
 void printPartitionD(int * arr, int length);
+void partitionOE(int * arr, int ind, int left);
+void partitionP(int * arr, int ind, int left);
 
 void partitionAll(int value)
 {
@@ -53,11 +55,19 @@ void partitionDecreasing(int value)
 
 void partitionOddAndEven(int value)
 {
+	int * arr;
+	arr = malloc(sizeof(int) * value);
+	partitionOE(arr, 0, value);
+	free (arr);
 	return;
 }
 
 void partitionPrime(int value)
 {
+	int * arr;
+	arr = malloc(sizeof(int) * value);
+	partitionP(arr, 0, value);
+	free (arr);
 	return;
 }
 
@@ -170,12 +180,62 @@ void partitionD(int * arr, int ind, int left)
 		partitionD(arr, ind + 1, left - val);
 	}
 }
+//cited from Prof. Lu's PDF book
+void partitionOE(int * arr, int ind, int left)
+{
+	int val;
+	if (left == 0)
+	{
+		printPartition(arr, ind);
+		return;
+	}
+	for (val = 1; val <= left; val ++)
+	{
+		int valid = 0;
+		if (ind == 0)
+		{
+			valid = 1;
+		}
+		else {
+			valid = (arr[ind - 1] % 2) != (val % 2);
+		}
+		if (valid == 1)
+		{
+			arr[ind] = val;
+			partitionOE(arr, ind + 1, left - val);
+		}
+	}
+}
 
+void partitionP(int * arr, int ind, int left)
+{
+	int val;
+	int i;
+	if (left == 0)
+	{   
+		printPartition(arr, ind);
+		return;
+	}   
+	for (val = 1; val <= left; val ++) 
+	{   
+		int valid = 1;
+		for(i = 2; i <= val / 2; ++i)
+		{
+			if (val % i == 0)
+			{
+				valid = 0;
+				break;
+			}
+		}
+		if (val == 1) valid = 0;
 
-
-
-
-
+		if (valid == 1)
+		{   
+			arr[ind] = val;
+			partitionP(arr, ind + 1, left - val);
+		}   
+	}   
+}
 
 
 
