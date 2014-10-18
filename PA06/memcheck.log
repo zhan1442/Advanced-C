@@ -1,0 +1,292 @@
+==12278== Memcheck, a memory error detector
+==12278== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==12278== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==12278== Command: a.out
+==12278== Parent PID: 17738
+==12278== 
+--12278-- 
+--12278-- Valgrind options:
+--12278--    --tool=memcheck
+--12278--    --leak-check=full
+--12278--    --verbose
+--12278--    --log-file=memcheck.log
+--12278-- Contents of /proc/version:
+--12278--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--12278-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--12278-- Page sizes: currently 4096, max supported 4096
+--12278-- Valgrind library directory: /usr/lib64/valgrind
+--12278-- Reading syms from /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA06/a.out
+--12278-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--12278--    object doesn't have a dynamic symbol table
+--12278-- Reading syms from /lib64/ld-2.12.so
+--12278--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--12278--   .. build-id is valid
+--12278-- Scheduler: using generic scheduler lock implementation.
+--12278-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==12278== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-12278-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==12278== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-12278-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==12278== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-12278-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==12278== 
+==12278== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==12278== don't want to do, unless you know exactly what you're doing,
+==12278== or are doing some strange experiment):
+==12278==   /usr/lib64/valgrind/../../bin/vgdb --pid=12278 ...command...
+==12278== 
+==12278== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==12278==   /path/to/gdb a.out
+==12278== and then give GDB the following command
+==12278==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=12278
+==12278== --pid is optional if only one valgrind process is running
+==12278== 
+--12278-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--12278-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--12278-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--12278-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--12278-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--12278-- Reading syms from /lib64/libc-2.12.so
+--12278--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--12278--   .. build-id is valid
+--12278-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--12278-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--12278-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--12278-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--12278-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--12278-- REDIR: 0x35ff880b70 (strcpy) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--12278-- REDIR: 0x35ff934180 (???) redirected to 0x4a07fd0 (strcpy)
+==12278== Invalid write of size 1
+==12278==    at 0x4A07FFF: strcpy (mc_replace_strmem.c:442)
+==12278==    by 0x400712: print_directions (answer06.c:19)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+--12278-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--12278-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x4012B3: check_we (answer06.c:195)
+==12278==    by 0x4008C6: direction (answer06.c:45)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x4013A7: check_we (answer06.c:228)
+==12278==    by 0x4008C6: direction (answer06.c:45)
+==12278==    by 0x401349: check_we (answer06.c:223)
+==12278==    by 0x4008C6: direction (answer06.c:45)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x4012B3: check_we (answer06.c:195)
+==12278==    by 0x400B3D: direction (answer06.c:76)
+==12278==    by 0x40151B: check_ns (answer06.c:296)
+==12278==    by 0x400DAC: direction (answer06.c:106)
+==12278==    by 0x401255: check_we (answer06.c:189)
+==12278==    by 0x4009B7: direction (answer06.c:53)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x4013A7: check_we (answer06.c:228)
+==12278==    by 0x400B3D: direction (answer06.c:76)
+==12278==    by 0x40151B: check_ns (answer06.c:296)
+==12278==    by 0x400DAC: direction (answer06.c:106)
+==12278==    by 0x401255: check_we (answer06.c:189)
+==12278==    by 0x4009B7: direction (answer06.c:53)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x401579: check_ns (answer06.c:301)
+==12278==    by 0x400DAC: direction (answer06.c:106)
+==12278==    by 0x401255: check_we (answer06.c:189)
+==12278==    by 0x4009B7: direction (answer06.c:53)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x4012B3: check_we (answer06.c:195)
+==12278==    by 0x4009B7: direction (answer06.c:53)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x400762: print_directions (answer06.c:24)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== 
+==12278== HEAP SUMMARY:
+==12278==     in use at exit: 0 bytes in 0 blocks
+==12278==   total heap usage: 6 allocs, 6 frees, 115 bytes allocated
+==12278== 
+==12278== All heap blocks were freed -- no leaks are possible
+==12278== 
+==12278== ERROR SUMMARY: 50 errors from 8 contexts (suppressed: 6 from 6)
+==12278== 
+==12278== 5 errors in context 1 of 8:
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x400762: print_directions (answer06.c:24)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== 
+==12278== 5 errors in context 2 of 8:
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x4012B3: check_we (answer06.c:195)
+==12278==    by 0x4009B7: direction (answer06.c:53)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== 
+==12278== 5 errors in context 3 of 8:
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x401579: check_ns (answer06.c:301)
+==12278==    by 0x400DAC: direction (answer06.c:106)
+==12278==    by 0x401255: check_we (answer06.c:189)
+==12278==    by 0x4009B7: direction (answer06.c:53)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== 
+==12278== 5 errors in context 4 of 8:
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x4013A7: check_we (answer06.c:228)
+==12278==    by 0x400B3D: direction (answer06.c:76)
+==12278==    by 0x40151B: check_ns (answer06.c:296)
+==12278==    by 0x400DAC: direction (answer06.c:106)
+==12278==    by 0x401255: check_we (answer06.c:189)
+==12278==    by 0x4009B7: direction (answer06.c:53)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== 
+==12278== 5 errors in context 5 of 8:
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x4012B3: check_we (answer06.c:195)
+==12278==    by 0x400B3D: direction (answer06.c:76)
+==12278==    by 0x40151B: check_ns (answer06.c:296)
+==12278==    by 0x400DAC: direction (answer06.c:106)
+==12278==    by 0x401255: check_we (answer06.c:189)
+==12278==    by 0x4009B7: direction (answer06.c:53)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== 
+==12278== 5 errors in context 6 of 8:
+==12278== Invalid write of size 1
+==12278==    at 0x4A07FFF: strcpy (mc_replace_strmem.c:442)
+==12278==    by 0x400712: print_directions (answer06.c:19)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== 
+==12278== 10 errors in context 7 of 8:
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x4013A7: check_we (answer06.c:228)
+==12278==    by 0x4008C6: direction (answer06.c:45)
+==12278==    by 0x401349: check_we (answer06.c:223)
+==12278==    by 0x4008C6: direction (answer06.c:45)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+==12278== 
+==12278== 10 errors in context 8 of 8:
+==12278== Invalid read of size 1
+==12278==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==12278==    by 0x35FF8689DA: puts (ioputs.c:37)
+==12278==    by 0x4012B3: check_we (answer06.c:195)
+==12278==    by 0x4008C6: direction (answer06.c:45)
+==12278==    by 0x400741: print_directions (answer06.c:22)
+==12278==    by 0x40064E: main (main.c:17)
+==12278==  Address 0x4c3b0bf is 0 bytes after a block of size 15 alloc'd
+==12278==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12278==    by 0x4006E1: print_directions (answer06.c:18)
+==12278==    by 0x40064E: main (main.c:17)
+==12278== 
+--12278-- 
+--12278-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--12278-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==12278== 
+==12278== ERROR SUMMARY: 50 errors from 8 contexts (suppressed: 6 from 6)
