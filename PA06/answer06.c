@@ -10,20 +10,21 @@ void print_directions(char * * maze, int w, int h)
 {
 	int row = 0;
 	int col = 0;
-	int i;
+	//int i;
 	while (col < w && maze[row][col] != ' ') col++;
 	//printf("row = %d, col = %d\n",row,col);
-	char * * rmaze = (char * *) malloc(sizeof(char *) * h);
-	for(i = 0; i < h; i++){
-		rmaze[i] = malloc(sizeof(char) * w);
-		strcpy(rmaze[i],maze[i]);
-	}
+	//char * * rmaze = (char * *) malloc(sizeof(char *) * (h + 1));
+	//for(i = 0; i < h; i++){
+	//	rmaze[i] = (char *) malloc(sizeof(char) * (w + 1));
+	//	rmaze[i][0] = '\0';
+	//	strcpy(rmaze[i],maze[i]);
+	//}
 
-	direction(rmaze, row, col, w, h, 1);
-	for(i = 0; i < h; i++){
-		printf("%s\n",rmaze[i]);
-	}
-	destruct(rmaze, w, h);
+	direction(maze, row, col, w, h, 1);
+	//for(i = 0; i < h; i++){
+	//	printf("%s\n",rmaze[i]);
+	//}
+	//destruct(rmaze, w, h);
 }
 void direction(char * * maze, int row, int col, int w, int h, int d)//d left=2 right=3 up=0 down=1
 {
