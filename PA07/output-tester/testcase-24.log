@@ -1,0 +1,15 @@
+
+/**
+ * Testcase 23 :: images/corrupt-testcases/09-incomplete-image.ee264 
+ * There is data missing from the end of the file. (Image_load should return NULL.)
+ */
+Only read 99 of 100 bytes of image data
+Error: failed to read 'images/corrupt-testcases/09-incomplete-image.ee264'
+Attempt to read 'images/corrupt-testcases/09-incomplete-image.ee264' as .ee264 format
+  Printing 264 header information:
+  file type (should be 21343632): 21343632
+  width: 10
+  height: 10
+  comment_len: 88
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.

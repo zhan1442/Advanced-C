@@ -1,0 +1,10 @@
+
+/**
+ * Testcase 15 :: images/corrupt-testcases/01-incomplete-header.ee264 
+ * File has less than 128 bytes, and thus too small to contain a complete header. (Image_load should return NULL.)
+ */
+Failed to read header from 'images/corrupt-testcases/01-incomplete-header.ee264'
+Error: failed to read 'images/corrupt-testcases/01-incomplete-header.ee264'
+Attempt to read 'images/corrupt-testcases/01-incomplete-header.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.

@@ -1,0 +1,10 @@
+
+/**
+ * Testcase 17 :: images/corrupt-testcases/03-width0.ee264 
+ * File header specifies 0 width, which is an error that you must check for. (Image_load should return NULL.)
+ */
+Invalid header in 'images/corrupt-testcases/03-width0.ee264'
+Error: failed to read 'images/corrupt-testcases/03-width0.ee264'
+Attempt to read 'images/corrupt-testcases/03-width0.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.

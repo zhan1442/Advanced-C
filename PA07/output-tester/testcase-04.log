@@ -1,0 +1,22 @@
+
+/**
+ * Testcase 03 :: images/bmps/04-unnormalized-nelsonmandela.bmp 
+ * Test linear normalization on bmp file
+ */
+Attempt to read 'images/bmps/04-unnormalized-nelsonmandela.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 296154
+  offset to image data: 54
+  header size: 40
+  width: 300
+  height: 329
+  planes: 1
+  bits: 24
+Success.
+Applying normalization
+Writing out 'student-out-03_04-nelsonmandela.bmp' in .bmp format
+Comparing student-out-03_04-nelsonmandela.bmp with expected output: 
+./diff-plus student-out-03_04-nelsonmandela.bmp images/bmps/04-nelsonmandela.bmp
+Match.
+Testcase passed.

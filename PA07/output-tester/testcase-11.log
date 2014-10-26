@@ -1,0 +1,17 @@
+
+/**
+ * Testcase 10 :: images/01-smile.ee264 
+ * Test reading ee264 format
+ */
+Attempt to read 'images/01-smile.ee264' as .ee264 format
+  Printing 264 header information:
+  file type (should be 21343632): 21343632
+  width: 224
+  height: 299
+  comment_len: 32
+Success.
+Writing out 'student-out-10_01-smile.bmp' in .bmp format
+Comparing student-out-10_01-smile.bmp with expected output: 
+./diff-plus student-out-10_01-smile.bmp images/bmps/01-smile.bmp
+Match.
+Testcase passed.

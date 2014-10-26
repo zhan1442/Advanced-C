@@ -1,0 +1,20 @@
+The program is not being run.
+Breakpoint 1 at 0x40083c: file answer07.c, line 50.
+Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA07/images/corrupt-testcases/a.out 
+
+Breakpoint 1, Image_load (filename=0x0) at answer07.c:51
+51		if(!err) { // Allocate Image struct
+61		if(!err) { // Init the Image struct
+83		if(fp) fclose(fp);
+84		return im;
+86	}
+main (argc=1, argv=0x7fffffffe388) at m.c:11
+11		return EXIT_SUCCESS;
+12	}
+__libc_start_main (main=0x4006f4 <main>, argc=1, ubp_av=0x7fffffffe388, init=<value optimized out>, fini=<value optimized out>, rtld_fini=<value optimized out>, stack_end=0x7fffffffe378)
+    at libc-start.c:258
+258	  exit (result);
+
+Program exited normally.
+The program is not being run.
+The program is not being run.

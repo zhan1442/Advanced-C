@@ -1,0 +1,17 @@
+
+/**
+ * Testcase 12 :: images/03-hawkes-bay-NZ.ee264 
+ * Test reading ee264 format
+ */
+Attempt to read 'images/03-hawkes-bay-NZ.ee264' as .ee264 format
+  Printing 264 header information:
+  file type (should be 21343632): 21343632
+  width: 300
+  height: 200
+  comment_len: 40
+Success.
+Writing out 'student-out-12_03-hawkes-bay-NZ.bmp' in .bmp format
+Comparing student-out-12_03-hawkes-bay-NZ.bmp with expected output: 
+./diff-plus student-out-12_03-hawkes-bay-NZ.bmp images/bmps/03-hawkes-bay-NZ.bmp
+Match.
+Testcase passed.

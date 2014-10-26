@@ -1,0 +1,22 @@
+
+/**
+ * Testcase 04 :: images/bmps/05-unnormalized-sagan-stamp.bmp 
+ * Test linear normalization on bmp file
+ */
+Attempt to read 'images/bmps/05-unnormalized-sagan-stamp.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 231354
+  offset to image data: 54
+  header size: 40
+  width: 299
+  height: 257
+  planes: 1
+  bits: 24
+Success.
+Applying normalization
+Writing out 'student-out-04_05-sagan-stamp.bmp' in .bmp format
+Comparing student-out-04_05-sagan-stamp.bmp with expected output: 
+./diff-plus student-out-04_05-sagan-stamp.bmp images/bmps/05-sagan-stamp.bmp
+Match.
+Testcase passed.

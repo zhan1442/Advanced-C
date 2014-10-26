@@ -1,0 +1,17 @@
+
+/**
+ * Testcase 14 :: images/05-sagan-stamp.ee264 
+ * Test reading ee264 format
+ */
+Attempt to read 'images/05-sagan-stamp.ee264' as .ee264 format
+  Printing 264 header information:
+  file type (should be 21343632): 21343632
+  width: 299
+  height: 257
+  comment_len: 38
+Success.
+Writing out 'student-out-14_05-sagan-stamp.bmp' in .bmp format
+Comparing student-out-14_05-sagan-stamp.bmp with expected output: 
+./diff-plus student-out-14_05-sagan-stamp.bmp images/bmps/05-sagan-stamp.bmp
+Match.
+Testcase passed.

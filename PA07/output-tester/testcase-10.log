@@ -1,0 +1,24 @@
+
+/**
+ * Testcase 09 :: images/bmps/05-sagan-stamp.bmp 
+ * Test writing ee264 format
+ */
+Attempt to read 'images/bmps/05-sagan-stamp.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 231354
+  offset to image data: 54
+  header size: 40
+  width: 299
+  height: 257
+  planes: 1
+  bits: 24
+Success.
+Writing out 'student-out-09_05-sagan-stamp.ee264' in .ee264 format
+
+comment_len = 38
+
+Comparing student-out-09_05-sagan-stamp.ee264 with expected output: 
+./diff-plus student-out-09_05-sagan-stamp.ee264 images/05-sagan-stamp.ee264
+Match.
+Testcase passed.

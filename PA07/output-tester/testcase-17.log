@@ -1,0 +1,10 @@
+
+/**
+ * Testcase 16 :: images/corrupt-testcases/02-check-magic-number.ee264 
+ * File has corrupted magic bits. (Image_load should return NULL.)
+ */
+Invalid header in 'images/corrupt-testcases/02-check-magic-number.ee264'
+Error: failed to read 'images/corrupt-testcases/02-check-magic-number.ee264'
+Attempt to read 'images/corrupt-testcases/02-check-magic-number.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.

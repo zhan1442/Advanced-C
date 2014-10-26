@@ -1,0 +1,70 @@
+==18784== Memcheck, a memory error detector
+==18784== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==18784== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==18784== Command: a.out 08-height-wrong.ee264
+==18784== Parent PID: 18499
+==18784== 
+--18784-- 
+--18784-- Valgrind options:
+--18784--    --tool=memcheck
+--18784--    --leak-check=full
+--18784--    --verbose
+--18784--    --log-file=memcheck.log
+--18784-- Contents of /proc/version:
+--18784--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--18784-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--18784-- Page sizes: currently 4096, max supported 4096
+--18784-- Valgrind library directory: /usr/lib64/valgrind
+--18784-- Reading syms from /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA07/images/corrupt-testcases/a.out
+--18784-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--18784--    object doesn't have a dynamic symbol table
+--18784-- Reading syms from /lib64/ld-2.12.so
+--18784--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--18784--   .. build-id is valid
+--18784-- Scheduler: using generic scheduler lock implementation.
+--18784-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==18784== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-18784-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==18784== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-18784-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==18784== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-18784-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==18784== 
+==18784== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==18784== don't want to do, unless you know exactly what you're doing,
+==18784== or are doing some strange experiment):
+==18784==   /usr/lib64/valgrind/../../bin/vgdb --pid=18784 ...command...
+==18784== 
+==18784== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==18784==   /path/to/gdb a.out
+==18784== and then give GDB the following command
+==18784==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=18784
+==18784== --pid is optional if only one valgrind process is running
+==18784== 
+--18784-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--18784-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--18784-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--18784-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--18784-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--18784-- Reading syms from /lib64/libc-2.12.so
+--18784--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--18784--   .. build-id is valid
+--18784-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--18784-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--18784-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--18784-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--18784-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--18784-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--18784-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--18784-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--18784-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+==18784== 
+==18784== HEAP SUMMARY:
+==18784==     in use at exit: 0 bytes in 0 blocks
+==18784==   total heap usage: 4 allocs, 4 frees, 770 bytes allocated
+==18784== 
+==18784== All heap blocks were freed -- no leaks are possible
+==18784== 
+==18784== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--18784-- 
+--18784-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--18784-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==18784== 
+==18784== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

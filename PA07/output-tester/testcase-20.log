@@ -1,0 +1,15 @@
+
+/**
+ * Testcase 19 :: images/corrupt-testcases/05-big-width-height.ee264 
+ * File header has crazy values for width and height which may cause malloc to fail. (Image_load should return NULL.)
+ */
+Failed to allocate 4468696772536959076 bytes for image data
+Error: failed to read 'images/corrupt-testcases/05-big-width-height.ee264'
+Attempt to read 'images/corrupt-testcases/05-big-width-height.ee264' as .ee264 format
+  Printing 264 header information:
+  file type (should be 21343632): 21343632
+  width: 2113929226
+  height: 2113929226
+  comment_len: 88
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.

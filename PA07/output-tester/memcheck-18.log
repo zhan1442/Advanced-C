@@ -1,0 +1,73 @@
+==11083== Memcheck, a memory error detector
+==11083== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==11083== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==11083== Command: ./a.out images/corrupt-testcases/04-height0.ee264 student-out-18_-
+==11083== Parent PID: 11082
+==11083== 
+--11083-- 
+--11083-- Valgrind options:
+--11083--    --tool=memcheck
+--11083--    --leak-check=full
+--11083--    --verbose
+--11083--    --log-file=memcheck-18.log
+--11083-- Contents of /proc/version:
+--11083--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--11083-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--11083-- Page sizes: currently 4096, max supported 4096
+--11083-- Valgrind library directory: /usr/lib64/valgrind
+--11083-- Reading syms from /tmp/.GC70Tz/a.out
+--11083-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--11083--    object doesn't have a dynamic symbol table
+--11083-- Reading syms from /lib64/ld-2.12.so
+--11083--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--11083--   .. build-id is valid
+--11083-- Scheduler: using generic scheduler lock implementation.
+--11083-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==11083== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-11083-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==11083== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-11083-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==11083== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-11083-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==11083== 
+==11083== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==11083== don't want to do, unless you know exactly what you're doing,
+==11083== or are doing some strange experiment):
+==11083==   /usr/lib64/valgrind/../../bin/vgdb --pid=11083 ...command...
+==11083== 
+==11083== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==11083==   /path/to/gdb ./a.out
+==11083== and then give GDB the following command
+==11083==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=11083
+==11083== --pid is optional if only one valgrind process is running
+==11083== 
+--11083-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--11083-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--11083-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--11083-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--11083-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--11083-- Reading syms from /lib64/libc-2.12.so
+--11083--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--11083--   .. build-id is valid
+--11083-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--11083-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--11083-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--11083-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--11083-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--11083-- REDIR: 0x35ff881120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--11083-- REDIR: 0x35ff9336f0 (__strlen_sse42) redirected to 0x4a07f90 (strlen)
+--11083-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--11083-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--11083-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+--11083-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--11083-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+==11083== 
+==11083== HEAP SUMMARY:
+==11083==     in use at exit: 0 bytes in 0 blocks
+==11083==   total heap usage: 1 allocs, 1 frees, 568 bytes allocated
+==11083== 
+==11083== All heap blocks were freed -- no leaks are possible
+==11083== 
+==11083== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--11083-- 
+--11083-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--11083-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==11083== 
+==11083== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

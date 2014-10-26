@@ -1,0 +1,15 @@
+
+/**
+ * Testcase 20 :: images/corrupt-testcases/06-bad-comment-len.ee264 
+ * File header has a crazy value for the comment length which will either cause malloc to fail, or you will fail to find enough bytes in the file to read the comment. (Image_load should return NULL.)
+ */
+Failed to read comment from 'images/corrupt-testcases/06-bad-comment-len.ee264'
+Error: failed to read 'images/corrupt-testcases/06-bad-comment-len.ee264'
+Attempt to read 'images/corrupt-testcases/06-bad-comment-len.ee264' as .ee264 format
+  Printing 264 header information:
+  file type (should be 21343632): 21343632
+  width: 10
+  height: 10
+  comment_len: 2122219134
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.

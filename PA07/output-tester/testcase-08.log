@@ -1,0 +1,24 @@
+
+/**
+ * Testcase 07 :: images/bmps/03-hawkes-bay-NZ.bmp 
+ * Test writing ee264 format
+ */
+Attempt to read 'images/bmps/03-hawkes-bay-NZ.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 180054
+  offset to image data: 54
+  header size: 40
+  width: 300
+  height: 200
+  planes: 1
+  bits: 24
+Success.
+Writing out 'student-out-07_03-hawkes-bay-NZ.ee264' in .ee264 format
+
+comment_len = 40
+
+Comparing student-out-07_03-hawkes-bay-NZ.ee264 with expected output: 
+./diff-plus student-out-07_03-hawkes-bay-NZ.ee264 images/03-hawkes-bay-NZ.ee264
+Match.
+Testcase passed.

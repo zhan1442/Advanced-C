@@ -1,0 +1,17 @@
+
+/**
+ * Testcase 11 :: images/02-cat-chess.ee264 
+ * Test reading ee264 format
+ */
+Attempt to read 'images/02-cat-chess.ee264' as .ee264 format
+  Printing 264 header information:
+  file type (should be 21343632): 21343632
+  width: 300
+  height: 225
+  comment_len: 36
+Success.
+Writing out 'student-out-11_02-cat-chess.bmp' in .bmp format
+Comparing student-out-11_02-cat-chess.bmp with expected output: 
+./diff-plus student-out-11_02-cat-chess.bmp images/bmps/02-cat-chess.bmp
+Match.
+Testcase passed.

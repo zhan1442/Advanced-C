@@ -1,0 +1,24 @@
+
+/**
+ * Testcase 08 :: images/bmps/04-nelsonmandela.bmp 
+ * Test writing ee264 format
+ */
+Attempt to read 'images/bmps/04-nelsonmandela.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 296154
+  offset to image data: 54
+  header size: 40
+  width: 300
+  height: 329
+  planes: 1
+  bits: 24
+Success.
+Writing out 'student-out-08_04-nelsonmandela.ee264' in .ee264 format
+
+comment_len = 40
+
+Comparing student-out-08_04-nelsonmandela.ee264 with expected output: 
+./diff-plus student-out-08_04-nelsonmandela.ee264 images/04-nelsonmandela.ee264
+Match.
+Testcase passed.

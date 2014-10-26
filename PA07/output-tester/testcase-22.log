@@ -1,0 +1,15 @@
+
+/**
+ * Testcase 21 :: images/corrupt-testcases/07-comment-has-no-null-byte.ee264 
+ * Comment (in file) does not end with a null-byte, which can cause serious problems. (Image_load should return NULL.)
+ */
+the comment is not end in a null-byte
+Error: failed to read 'images/corrupt-testcases/07-comment-has-no-null-byte.ee264'
+Attempt to read 'images/corrupt-testcases/07-comment-has-no-null-byte.ee264' as .ee264 format
+  Printing 264 header information:
+  file type (should be 21343632): 21343632
+  width: 10
+  height: 10
+  comment_len: 88
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.
