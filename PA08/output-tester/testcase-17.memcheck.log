@@ -1,0 +1,88 @@
+==4294== Memcheck, a memory error detector
+==4294== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==4294== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==4294== Command: ./a.out 16
+==4294== Parent PID: 4291
+==4294== 
+--4294-- 
+--4294-- Valgrind options:
+--4294--    --tool=memcheck
+--4294--    --leak-check=full
+--4294--    --verbose
+--4294--    --log-file=memcheck.log
+--4294-- Contents of /proc/version:
+--4294--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--4294-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--4294-- Page sizes: currently 4096, max supported 4096
+--4294-- Valgrind library directory: /usr/lib64/valgrind
+--4294-- Reading syms from /tmp/.mIqIVX/a.out
+--4294-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--4294--    object doesn't have a dynamic symbol table
+--4294-- Reading syms from /lib64/ld-2.12.so
+--4294--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--4294--   .. build-id is valid
+--4294-- Scheduler: using generic scheduler lock implementation.
+--4294-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==4294== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-4294-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==4294== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-4294-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==4294== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-4294-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==4294== 
+==4294== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==4294== don't want to do, unless you know exactly what you're doing,
+==4294== or are doing some strange experiment):
+==4294==   /usr/lib64/valgrind/../../bin/vgdb --pid=4294 ...command...
+==4294== 
+==4294== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==4294==   /path/to/gdb ./a.out
+==4294== and then give GDB the following command
+==4294==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=4294
+==4294== --pid is optional if only one valgrind process is running
+==4294== 
+--4294-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--4294-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--4294-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--4294-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--4294-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--4294-- Reading syms from /lib64/libc-2.12.so
+--4294--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--4294--   .. build-id is valid
+--4294-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--4294-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--4294-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--4294-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--4294-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--4294-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--4294-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--4294-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--4294-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--4294-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--4294-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+==4294== 
+==4294== HEAP SUMMARY:
+==4294==     in use at exit: 54 bytes in 6 blocks
+==4294==   total heap usage: 13 allocs, 7 frees, 132 bytes allocated
+==4294== 
+==4294== Searching for pointers to 6 not-freed blocks
+==4294== Checked 64,856 bytes
+==4294== 
+==4294== 54 (16 direct, 38 indirect) bytes in 1 blocks are definitely lost in loss record 6 of 6
+==4294==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==4294==    by 0x400949: List_createNode_sol (<stdin>:19)
+==4294==    by 0x400D86: List_create (test_support_functions.c:48)
+==4294==    by 0x400F5B: make_list (test_support_functions.c:75)
+==4294==    by 0x401876: tests_List_merge (test_List_merge.c:109)
+==4294==    by 0x401FB5: main (<stdin>:159)
+==4294== 
+==4294== LEAK SUMMARY:
+==4294==    definitely lost: 16 bytes in 1 blocks
+==4294==    indirectly lost: 38 bytes in 5 blocks
+==4294==      possibly lost: 0 bytes in 0 blocks
+==4294==    still reachable: 0 bytes in 0 blocks
+==4294==         suppressed: 0 bytes in 0 blocks
+==4294== 
+==4294== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--4294-- 
+--4294-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--4294-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==4294== 
+==4294== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)

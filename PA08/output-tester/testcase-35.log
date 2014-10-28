@@ -1,0 +1,10 @@
+
+Testcase 35
+   Testing List_sort(list, compar), where:
+   
+   + compar is: return -strcmp(a, b)
+   + list is: "11" ==> "13" ==> "17" ==> "19" ==> "23" ==> NULL
+   
+   sorted is  : "23" ==> "19" ==> "17" ==> "13" ==> "11" ==> NULL
+   solution is: "23" ==> "19" ==> "17" ==> "13" ==> "11" ==> NULL
+Pass.

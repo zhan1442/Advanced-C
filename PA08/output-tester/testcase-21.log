@@ -1,0 +1,11 @@
+
+Testcase 21
+   Testing List_merge(lhs, rhs, compar), where:
+   
+   + compar is: return -strcmp(a, b)
+   + lhs is: "7" ==> "5" ==> "3" ==> "2" ==> NULL
+   + rhs is: "23" ==> "19" ==> "17" ==> "13" ==> "11" ==> NULL
+   
+   merged is  : "7" ==> "5" ==> "3" ==> "23" ==> "2" ==> "19" ==> "17" ==> "13" ==> "11" ==> NULL
+   solution is: "7" ==> "5" ==> "3" ==> "23" ==> "2" ==> "19" ==> "17" ==> "13" ==> "11" ==> NULL
+Pass.

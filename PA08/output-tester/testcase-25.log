@@ -1,0 +1,11 @@
+
+Testcase 25
+   Testing List_merge(lhs, rhs, compar), where:
+   
+   + compar is: return strlen(a) - strlen(b)
+   + lhs is: "a" ==> "be" ==> "sea" ==> NULL
+   + rhs is: "deee" ==> NULL
+   
+   merged is  : "a" ==> "be" ==> "sea" ==> "deee" ==> NULL
+   solution is: "a" ==> "be" ==> "sea" ==> "deee" ==> NULL
+Pass.

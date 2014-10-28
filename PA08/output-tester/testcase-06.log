@@ -1,0 +1,4 @@
+
+Testcase 6
+   Testing: List_destroyNode(list), where list is: "one" ==> "two" ==> "three" ==> "four" ==> "five" ==> "six" ==> NULL
+Pass.

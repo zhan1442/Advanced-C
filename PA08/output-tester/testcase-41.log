@@ -1,0 +1,10 @@
+
+Testcase 41
+   Testing List_sort(list, compar), where:
+   
+   + compar is: return strlen(a) - strlen(b)
+   + list is: "sea" ==> "a" ==> "be" ==> NULL
+   
+   sorted is  : "a" ==> "be" ==> "sea" ==> NULL
+   solution is: "a" ==> "be" ==> "sea" ==> NULL
+Pass.

@@ -1,0 +1,91 @@
+==9008== Memcheck, a memory error detector
+==9008== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==9008== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==9008== Command: ./a.out 22
+==9008== Parent PID: 9006
+==9008== 
+--9008-- 
+--9008-- Valgrind options:
+--9008--    --tool=memcheck
+--9008--    --leak-check=full
+--9008--    --verbose
+--9008--    --log-file=memcheck.log
+--9008-- Contents of /proc/version:
+--9008--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--9008-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--9008-- Page sizes: currently 4096, max supported 4096
+--9008-- Valgrind library directory: /usr/lib64/valgrind
+--9008-- Reading syms from /tmp/.mIqIVX/a.out
+--9008-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--9008--    object doesn't have a dynamic symbol table
+--9008-- Reading syms from /lib64/ld-2.12.so
+--9008--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--9008--   .. build-id is valid
+--9008-- Scheduler: using generic scheduler lock implementation.
+--9008-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==9008== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9008-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==9008== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9008-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==9008== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9008-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==9008== 
+==9008== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9008== don't want to do, unless you know exactly what you're doing,
+==9008== or are doing some strange experiment):
+==9008==   /usr/lib64/valgrind/../../bin/vgdb --pid=9008 ...command...
+==9008== 
+==9008== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9008==   /path/to/gdb ./a.out
+==9008== and then give GDB the following command
+==9008==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=9008
+==9008== --pid is optional if only one valgrind process is running
+==9008== 
+--9008-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--9008-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--9008-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--9008-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--9008-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--9008-- Reading syms from /lib64/libc-2.12.so
+--9008--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--9008--   .. build-id is valid
+--9008-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9008-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9008-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--9008-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--9008-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--9008-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--9008-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9008-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--9008-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--9008-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--9008-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+==9008== 
+==9008== HEAP SUMMARY:
+==9008==     in use at exit: 142 bytes in 12 blocks
+==9008==   total heap usage: 29 allocs, 17 frees, 382 bytes allocated
+==9008== 
+==9008== Searching for pointers to 12 not-freed blocks
+==9008== Checked 64,856 bytes
+==9008== 
+==9008== 142 (16 direct, 126 indirect) bytes in 1 blocks are definitely lost in loss record 12 of 12
+==9008==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==9008==    by 0x400949: List_createNode_sol (<stdin>:19)
+==9008==    by 0x400D86: List_create (test_support_functions.c:48)
+==9008==    by 0x400DA3: List_create (test_support_functions.c:49)
+==9008==    by 0x400DA3: List_create (test_support_functions.c:49)
+==9008==    by 0x400DA3: List_create (test_support_functions.c:49)
+==9008==    by 0x400FC9: make_list (test_support_functions.c:80)
+==9008==    by 0x401973: tests_List_merge (test_List_merge.c:118)
+==9008==    by 0x401FB5: main (<stdin>:159)
+==9008== 
+==9008== LEAK SUMMARY:
+==9008==    definitely lost: 16 bytes in 1 blocks
+==9008==    indirectly lost: 126 bytes in 11 blocks
+==9008==      possibly lost: 0 bytes in 0 blocks
+==9008==    still reachable: 0 bytes in 0 blocks
+==9008==         suppressed: 0 bytes in 0 blocks
+==9008== 
+==9008== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--9008-- 
+--9008-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--9008-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==9008== 
+==9008== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)

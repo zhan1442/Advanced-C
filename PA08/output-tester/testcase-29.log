@@ -1,0 +1,10 @@
+
+Testcase 29
+   Testing List_sort(list, compar), where:
+   
+   + compar is: return strcmp(a, b)
+   + list is: "a" ==> "c" ==> "e" ==> "g" ==> "h" ==> "i" ==> "j" ==> NULL
+   
+   sorted is  : "a" ==> "c" ==> "e" ==> "g" ==> "h" ==> "i" ==> "j" ==> NULL
+   solution is: "a" ==> "c" ==> "e" ==> "g" ==> "h" ==> "i" ==> "j" ==> NULL
+Pass.

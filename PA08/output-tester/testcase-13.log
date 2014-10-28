@@ -1,0 +1,4 @@
+
+Testcase 13
+   Testing: List_length(list) = 5, where list is: "[1]" ==> "[2]" ==> "[3]" ==> "[4]" ==> "[5]" ==> NULL
+Pass.

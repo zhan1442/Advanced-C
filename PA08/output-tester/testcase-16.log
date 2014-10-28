@@ -1,0 +1,11 @@
+
+Testcase 16
+   Testing List_merge(lhs, rhs, compar), where:
+   
+   + compar is: return strcmp(a, b)
+   + lhs is: "b" ==> "d" ==> "f" ==> NULL
+   + rhs is: NULL
+   
+   merged is  : "b" ==> "d" ==> "f" ==> NULL
+   solution is: "b" ==> "d" ==> "f" ==> NULL
+Pass.

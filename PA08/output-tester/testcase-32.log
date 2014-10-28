@@ -1,0 +1,10 @@
+
+Testcase 32
+   Testing List_sort(list, compar), where:
+   
+   + compar is: return -strcmp(a, b)
+   + list is: "2" ==> "3" ==> "5" ==> "7" ==> NULL
+   
+   sorted is  : "7" ==> "5" ==> "3" ==> "2" ==> NULL
+   solution is: "7" ==> "5" ==> "3" ==> "2" ==> NULL
+Pass.

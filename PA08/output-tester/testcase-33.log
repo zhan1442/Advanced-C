@@ -1,0 +1,10 @@
+
+Testcase 33
+   Testing List_sort(list, compar), where:
+   
+   + compar is: return atoi(a) - atoi(b)
+   + list is: "2" ==> "3" ==> "5" ==> "7" ==> NULL
+   
+   sorted is  : "2" ==> "3" ==> "5" ==> "7" ==> NULL
+   solution is: "2" ==> "3" ==> "5" ==> "7" ==> NULL
+Pass.

@@ -1,0 +1,10 @@
+
+Testcase 38
+   Testing List_sort(list, compar), where:
+   
+   + compar is: return -strcmp(a, b)
+   + list is: "2010" ==> NULL
+   
+   sorted is  : "2010" ==> NULL
+   solution is: "2010" ==> NULL
+Pass.

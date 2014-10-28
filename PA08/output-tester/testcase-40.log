@@ -1,0 +1,10 @@
+
+Testcase 40
+   Testing List_sort(list, compar), where:
+   
+   + compar is: return -strcmp(a, b)
+   + list is: "Hello" ==> "Doctor" ==> "Name" ==> "Continue" ==> "Yesterday" ==> "Tomorrow" ==> NULL
+   
+   sorted is  : "Yesterday" ==> "Tomorrow" ==> "Name" ==> "Hello" ==> "Doctor" ==> "Continue" ==> NULL
+   solution is: "Yesterday" ==> "Tomorrow" ==> "Name" ==> "Hello" ==> "Doctor" ==> "Continue" ==> NULL
+Pass.

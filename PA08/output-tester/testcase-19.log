@@ -1,0 +1,11 @@
+
+Testcase 19
+   Testing List_merge(lhs, rhs, compar), where:
+   
+   + compar is: return -strcmp(a, b)
+   + lhs is: "f" ==> "d" ==> "b" ==> NULL
+   + rhs is: "j" ==> "i" ==> "h" ==> "g" ==> "e" ==> "c" ==> "a" ==> NULL
+   
+   merged is  : "j" ==> "i" ==> "h" ==> "g" ==> "f" ==> "e" ==> "d" ==> "c" ==> "b" ==> "a" ==> NULL
+   solution is: "j" ==> "i" ==> "h" ==> "g" ==> "f" ==> "e" ==> "d" ==> "c" ==> "b" ==> "a" ==> NULL
+Pass.
