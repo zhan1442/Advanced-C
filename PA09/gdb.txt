@@ -1,0 +1,22 @@
+Breakpoint 1 at 0x400828: file answer09.c, line 1.
+Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA09/a.out 
+
+Breakpoint 1, create_node (stars=0x602a50 "3.5", name=0x602a70 "Eric Goldberg, MD", address=0x602a90 "4840 E Indian School Rd, Ste 101, Phoenix, AZ 85018\n") at answer09.c:11
+warning: Source file is more recent than executable.
+11		BusinessNode * node = malloc(sizeof(BusinessNode));
+12		node->stars = strdup(stars);
+13		node->name = strdup(name);
+14		node->address = strdup(address);
+16		node->left = NULL;
+17		node->right = NULL;
+19		return node;
+20	}
+load_tree_from_file (filename=0x400f04 "shortfile.tsv") at answer09.c:63
+63					root = tree_insert(node, root);
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00000000004008bb in tree_insert (node=0x602ad0, root=0x0) at answer09.c:26
+26			new = create_node(node->stars, node->name, node->address);
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
