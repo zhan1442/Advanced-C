@@ -48,7 +48,6 @@ typedef struct YelpDataBST {
 	struct YelpDataBST * right;
 } NameNode;
 
-//char * strupr(char *str);
 char * * explode(const char * str, const char * delims);
 void destroyStringArray(char * * strArr, int len);
 NameNode * insert_name(BusNode bus, NameNode * nameroot);
@@ -60,8 +59,12 @@ ZipNode * create_zipnode(BusNode bus);
 IdNode * create_idnode(BusNode bus);
 IdNode * insert_id(BusNode bus, IdNode * idroot);
 
+void locidcount(IdNode * idroot, uint32_t * num_locations);
+void loczipcount(ZipNode * ziproot, uint32_t * num_locations);
 void loccount(StateNode * stfound, uint32_t * num_locations);
-void createlocarr(StateNode * stfound, struct Location * locarr, int ind);
+void createlocarr(StateNode * stfound, struct Location * locarr, int * ind);
+void createloczp(ZipNode * ziproot, char * state, int * ind, struct Location * locarr);
+void createlocip(IdNode * idroot, char * zip, char * state, int * ind, struct Location * locarr);
 
 NameNode * searchname(NameNode * nameroot, char * name);
 StateNode * searchstate(StateNode * stroot, char * state);
@@ -155,21 +158,59 @@ NameNode * searchname(NameNode * nameroot, char * name)
 	return searchname(nameroot->right, name);
 }
 
+void locidcount(IdNode * idroot, uint32_t * num_locations)
+{
+	if (idroot == NULL) return;
+	locidcount(idroot->left, num_locations);
+	(*num_locations) ++;
+	locidcount(idroot->right, num_locations);
+}
+
+void loczipcount(ZipNode * ziproot, uint32_t * num_locations)
+{
+	if (ziproot == NULL) return;
+	loczipcount(ziproot->left, num_locations);
+	locidcount(ziproot->idroot, num_locations);
+	loczipcount(ziproot->right, num_locations);
+}
+
 void loccount(StateNode * stfound, uint32_t * num_locations)
 {
 	if (stfound == NULL) return;
 	loccount(stfound->left, num_locations);
-	(*num_locations) ++;
+	loczipcount(stfound->ziproot, num_locations);
 	loccount(stfound->right, num_locations);
 }
 
-void createlocarr(StateNode * stfound, struct Location * locarr, int ind)
+void createlocip(IdNode * idroot, char * zip, char * state, int * ind, struct Location * locarr)
+{
+	if (idroot == NULL) return;
+	createlocip(idroot->left, zip, state, ind,locarr);
+	locarr->state = strdup(state);
+	locarr->zip_code = strdup(zip);
+	locarr->address = strdup(idroot->address);
+	locarr->city = strdup(idroot->city);
+	printf("state = %s, zip_code = %s, address = %s, city = %s\n",locarr->state, locarr->zip_code, locarr->address,locarr->city);
+	//may add review struct and num_review......
+	createlocip(idroot->right, zip, state, ind,locarr);
+}
+
+void createloczp(ZipNode * ziproot, char * state, int * ind, struct Location * locarr)
+{
+	if (ziproot == NULL) return;
+	createloczp(ziproot->left, state, ind,locarr);
+	createlocip(ziproot->idroot, ziproot->zip, state,ind,locarr);
+	createloczp(ziproot->right, state, ind,locarr);
+}
+
+void createlocarr(StateNode * stfound, struct Location * locarr, int * ind)
 {
 	if (stfound == NULL) return;
 	createlocarr(stfound->left, locarr,ind);
-	(locarr[ind]).state = strdup(stfound->state);////
-	printf("(locarr[ind]).state = %s\n",(locarr[ind]).state);
-	ind ++;
+	//(locarr[ind]).state = strdup(stfound->state);////
+	//printf("(locarr[ind]).state = %s\n",(locarr[ind]).state);
+	createloczp(stfound->ziproot,stfound->state,ind,locarr);
+	//may qsort city 
 	createlocarr(stfound->right, locarr,ind);	
 }
 
@@ -185,13 +226,14 @@ struct Business* get_business_reviews(struct YelpDataBST* bst, char* name, char*
 	
 	busi->name = (namefound == NULL) ? NULL : strdup(namefound->name); ////
 	if (busi->name == NULL) return NULL;
-	else {
+	else {//this function need change!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		if (state == NULL) {
 			busi->num_locations = 0;
 			loccount(namefound->stroot,&(busi->num_locations));
-			printf("have %d state\n",busi->num_locations);
+			printf("have %d id\n",busi->num_locations);
 			busi->locations = malloc(sizeof(struct Location)*(busi->num_locations));
-			createlocarr(namefound->stroot, busi->locations,0);
+			int ind = 0;
+			createlocarr(namefound->stroot, busi->locations,&ind);
 			//printf("(locarr[ind]).state = %s\n",(busi->locations[0]).state);
 		}
 		else if (state != NULL) {
@@ -199,14 +241,21 @@ struct Business* get_business_reviews(struct YelpDataBST* bst, char* name, char*
 			if (stfound == NULL) {
 				busi->locations = NULL;
 				busi->num_locations = 0;
+				return busi;
 			}
 			else {
-				busi->locations = malloc(sizeof(struct Location));
-				busi->num_locations = 1;
-				createlocarr(stfound, busi->locations,0);
+				busi->num_locations = 0;
+				loczipcount(stfound->ziproot, &(busi->num_locations));
+				busi->locations = malloc(sizeof(struct Location)*(busi->num_locations));
+				int ind = 0;
+				createlocarr(stfound, busi->locations,&ind);
 				//printf("(locarr[ind]).state = %s\n",(busi->locations[0]).state);
 			}
 		}
+		
+		//zipfound = searchzip(stfound->ziproot,zip_code);
+
+
 	}
 
 
