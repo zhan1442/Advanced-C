@@ -1,542 +1,61 @@
-No source file named :answer10.c.
-Make breakpoint pending on future shared library load? (y or [n]) Breakpoint 1 at 0x400ffc: file main.c, line 1.
+Breakpoint 1 at 0x401129: file answer10.c, line 178.
 Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA10/a.out 
 
-Breakpoint 1, main () at main.c:42
-42		struct YelpDataBST * nameroot = NULL;
-43		nameroot = create_business_bst("businesses.tsv","reviews_path");
+Breakpoint 1, get_business_reviews (bst=0x605d60, name=0x401ec3 "RUBY'S DINER", state=0x0, zip_code=0x401ed0 "85226") at answer10.c:178
+178		struct Business * busi = malloc(sizeof(struct Business));
+179		NameNode * namefound = NULL;
+180		StateNode * stfound = NULL;
+183		namefound = searchname(bst, name);
+186		busi->name = (namefound == NULL) ? NULL : strdup(namefound->name); ////
+187		if (busi->name == NULL) return NULL;
+189			if (state == NULL) {
+190				busi->num_locations = 0;
+191				loccount(namefound->stroot,&(busi->num_locations));
+192				printf("have %d state\n",busi->num_locations);
+193				busi->locations = malloc(sizeof(struct Location)*(busi->num_locations));
+194				createlocarr(namefound->stroot, busi->locations,0);
 
 Program received signal SIGSEGV, Segmentation fault.
-0x0000000000400c90 in insert_st (bus=..., stroot=0x4f594e4143205327) at answer10.c:126
-126		if (strcmp(strupr(bus.state),strupr(stroot->state)) <= 0) {
-Breakpoint 2 at 0x4008c4: file answer10.c, line 1.
-The program being debugged has been started already.
-Start it from the beginning? (y or n) Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA10/a.out 
-
-Breakpoint 1, main () at main.c:42
-42		struct YelpDataBST * nameroot = NULL;
-43		nameroot = create_business_bst("businesses.tsv","reviews_path");
-
-Breakpoint 2, create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:48
-48		FILE * fp = NULL;
-49		int err = 0;
-50		NameNode * nameroot = NULL;
-53		fp = fopen(businesses_path, "r");
-54		if(!fp) {
-58		if(!err) {
-59			char * str = (char *) malloc(2000 * sizeof(char));
-60			char * * strarr = NULL;
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Program received signal SIGSEGV, Segmentation fault.
-0x0000000000400c90 in insert_st (bus=..., stroot=0x4f594e4143205327) at answer10.c:126
-126		if (strcmp(strupr(bus.state),strupr(stroot->state)) <= 0) {
+0x00000035ff847e2c in _IO_vfprintf_internal (s=<value optimized out>, format=<value optimized out>, ap=<value optimized out>) at vfprintf.c:1641
+1641		  process_string_arg (((struct printf_spec *) NULL));
 
 Program terminated with signal SIGSEGV, Segmentation fault.
 The program no longer exists.
 The program is not being run.
 The program is not being run.
-The program is not being run.
-The program is not being run.
-The program is not being run.
-The program is not being run.
-Breakpoint 3 at 0x400afa: file answer10.c, line 101.
+Breakpoint 2 at 0x401067: file answer10.c, line 168.
 Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA10/a.out 
 
-Breakpoint 1, main () at main.c:42
-42		struct YelpDataBST * nameroot = NULL;
-43		nameroot = create_business_bst("businesses.tsv","reviews_path");
+Breakpoint 1, get_business_reviews (bst=0x605d60, name=0x401ec3 "RUBY'S DINER", state=0x0, zip_code=0x401ed0 "85226") at answer10.c:178
+178		struct Business * busi = malloc(sizeof(struct Business));
+179		NameNode * namefound = NULL;
+180		StateNode * stfound = NULL;
+183		namefound = searchname(bst, name);
+186		busi->name = (namefound == NULL) ? NULL : strdup(namefound->name); ////
+187		if (busi->name == NULL) return NULL;
+189			if (state == NULL) {
+190				busi->num_locations = 0;
+191				loccount(namefound->stroot,&(busi->num_locations));
+192				printf("have %d state\n",busi->num_locations);
+193				busi->locations = malloc(sizeof(struct Location)*(busi->num_locations));
+194				createlocarr(namefound->stroot, busi->locations,0);
 
-Breakpoint 2, create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:48
-48		FILE * fp = NULL;
-49		int err = 0;
-50		NameNode * nameroot = NULL;
-53		fp = fopen(businesses_path, "r");
-54		if(!fp) {
-58		if(!err) {
-59			char * str = (char *) malloc(2000 * sizeof(char));
-60			char * * strarr = NULL;
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
+Breakpoint 2, createlocarr (stfound=0x605f40, locarr=0x605bc0, ind=0) at answer10.c:168
+168		if (stfound == NULL) return;
+169		createlocarr(stfound->left, locarr,ind);
 
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-114	}
-create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:71
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602b90) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-114	}
-113		return nameroot;
-114	}
-create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:71
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602b90) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602c70) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-105			nameroot->left = insert_name(bus, nameroot->left);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-114	}
-113		return nameroot;
-114	}
-113		return nameroot;
-114	}
-create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:71
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602b90) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602c70) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-105			nameroot->left = insert_name(bus, nameroot->left);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602d40) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
+Breakpoint 2, createlocarr (stfound=0x0, locarr=0x605bc0, ind=0) at answer10.c:168
+168		if (stfound == NULL) return;
+174	}
+createlocarr (stfound=0x605f40, locarr=0x605bc0, ind=0) at answer10.c:170
+170		(locarr[ind]).state = strdup(stfound->state);////
+171		ind ++;
+172		printf("(locarr[ind]).state = %s\n",(locarr[ind]).state);
 
 Program received signal SIGSEGV, Segmentation fault.
-0x0000000000400c90 in insert_st (bus=..., stroot=0x4f594e4143205327) at answer10.c:126
-126		if (strcmp(strupr(bus.state),strupr(stroot->state)) <= 0) {
+0x00000035ff847e2c in _IO_vfprintf_internal (s=<value optimized out>, format=<value optimized out>, ap=<value optimized out>) at vfprintf.c:1641
+1641		  process_string_arg (((struct printf_spec *) NULL));
 
 Program terminated with signal SIGSEGV, Segmentation fault.
 The program no longer exists.
-The program is not being run.
-The program is not being run.
-The program is not being run.
-The program is not being run.
-The program is not being run.
-The program is not being run.
-Breakpoint 4 at 0x400a26: file answer10.c, line 81.
-Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA10/a.out 
-
-Breakpoint 1, main () at main.c:42
-42		struct YelpDataBST * nameroot = NULL;
-43		nameroot = create_business_bst("businesses.tsv","reviews_path");
-
-Breakpoint 2, create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:48
-48		FILE * fp = NULL;
-49		int err = 0;
-50		NameNode * nameroot = NULL;
-53		fp = fopen(businesses_path, "r");
-54		if(!fp) {
-58		if(!err) {
-59			char * str = (char *) malloc(2000 * sizeof(char));
-60			char * * strarr = NULL;
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-
-Breakpoint 4, create_namenode (bus=...) at answer10.c:81
-81		NameNode * nameno = malloc(sizeof(NameNode));////
-82		nameno->name = strdup(bus.name);////
-83		nameno->stroot = insert_st(bus, nameno->stroot);
-84		nameno->left = NULL;
-85		nameno->right = NULL;
-86		return nameno;
-87	}
-insert_name (bus=..., nameroot=0x0) at answer10.c:114
-114	}
-create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:71
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602b90) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-
-Breakpoint 4, create_namenode (bus=...) at answer10.c:81
-81		NameNode * nameno = malloc(sizeof(NameNode));////
-82		nameno->name = strdup(bus.name);////
-83		nameno->stroot = insert_st(bus, nameno->stroot);
-84		nameno->left = NULL;
-85		nameno->right = NULL;
-86		return nameno;
-87	}
-insert_name (bus=..., nameroot=0x0) at answer10.c:114
-114	}
-113		return nameroot;
-114	}
-create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:71
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602b90) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602c70) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-105			nameroot->left = insert_name(bus, nameroot->left);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-
-Breakpoint 4, create_namenode (bus=...) at answer10.c:81
-81		NameNode * nameno = malloc(sizeof(NameNode));////
-82		nameno->name = strdup(bus.name);////
-83		nameno->stroot = insert_st(bus, nameno->stroot);
-84		nameno->left = NULL;
-85		nameno->right = NULL;
-86		return nameno;
-87	}
-insert_name (bus=..., nameroot=0x0) at answer10.c:114
-114	}
-113		return nameroot;
-114	}
-113		return nameroot;
-114	}
-create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:71
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602b90) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602c70) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-105			nameroot->left = insert_name(bus, nameroot->left);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602d40) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-
-Breakpoint 4, create_namenode (bus=...) at answer10.c:81
-81		NameNode * nameno = malloc(sizeof(NameNode));////
-82		nameno->name = strdup(bus.name);////
-83		nameno->stroot = insert_st(bus, nameno->stroot);
-
-Program received signal SIGSEGV, Segmentation fault.
-0x0000000000400c90 in insert_st (bus=..., stroot=0x4f594e4143205327) at answer10.c:126
-126		if (strcmp(strupr(bus.state),strupr(stroot->state)) <= 0) {
-
-Program terminated with signal SIGSEGV, Segmentation fault.
-The program no longer exists.
-The program is not being run.
-The program is not being run.
-The program is not being run.
-The program is not being run.
-Breakpoint 5 at 0x400c58: file answer10.c, line 123.
-Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA10/a.out 
-
-Breakpoint 1, main () at main.c:42
-42		struct YelpDataBST * nameroot = NULL;
-43		nameroot = create_business_bst("businesses.tsv","reviews_path");
-
-Breakpoint 2, create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:48
-48		FILE * fp = NULL;
-49		int err = 0;
-50		NameNode * nameroot = NULL;
-53		fp = fopen(businesses_path, "r");
-54		if(!fp) {
-58		if(!err) {
-59			char * str = (char *) malloc(2000 * sizeof(char));
-60			char * * strarr = NULL;
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-
-Breakpoint 4, create_namenode (bus=...) at answer10.c:81
-81		NameNode * nameno = malloc(sizeof(NameNode));////
-82		nameno->name = strdup(bus.name);////
-83		nameno->stroot = insert_st(bus, nameno->stroot);
-
-Breakpoint 5, insert_st (bus=..., stroot=0x0) at answer10.c:123
-123		if (stroot == NULL) {
-124			return create_statenode(bus);
-136	}
-create_namenode (bus=...) at answer10.c:84
-84		nameno->left = NULL;
-85		nameno->right = NULL;
-86		return nameno;
-87	}
-insert_name (bus=..., nameroot=0x0) at answer10.c:114
-114	}
-create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:71
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602b90) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-
-Breakpoint 4, create_namenode (bus=...) at answer10.c:81
-81		NameNode * nameno = malloc(sizeof(NameNode));////
-82		nameno->name = strdup(bus.name);////
-83		nameno->stroot = insert_st(bus, nameno->stroot);
-
-Breakpoint 5, insert_st (bus=..., stroot=0x0) at answer10.c:123
-123		if (stroot == NULL) {
-124			return create_statenode(bus);
-136	}
-create_namenode (bus=...) at answer10.c:84
-84		nameno->left = NULL;
-85		nameno->right = NULL;
-86		return nameno;
-87	}
-insert_name (bus=..., nameroot=0x0) at answer10.c:114
-114	}
-113		return nameroot;
-114	}
-create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:71
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602b90) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602c70) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-105			nameroot->left = insert_name(bus, nameroot->left);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-
-Breakpoint 4, create_namenode (bus=...) at answer10.c:81
-81		NameNode * nameno = malloc(sizeof(NameNode));////
-82		nameno->name = strdup(bus.name);////
-83		nameno->stroot = insert_st(bus, nameno->stroot);
-
-Breakpoint 5, insert_st (bus=..., stroot=0x0) at answer10.c:123
-123		if (stroot == NULL) {
-124			return create_statenode(bus);
-136	}
-create_namenode (bus=...) at answer10.c:84
-84		nameno->left = NULL;
-85		nameno->right = NULL;
-86		return nameno;
-87	}
-insert_name (bus=..., nameroot=0x0) at answer10.c:114
-114	}
-113		return nameroot;
-114	}
-113		return nameroot;
-114	}
-create_business_bst (businesses_path=0x4011a3 "businesses.tsv", reviews_path=0x401196 "reviews_path") at answer10.c:71
-71				destroyStringArray(strarr, 7);	
-61			while (!feof(fp)) {
-62				fgets(str,2000,fp);
-64				strarr = explode(str,"\t");
-65				bus.id = strarr[0];
-66				bus.name = strarr[1];
-67				bus.state = strarr[4];
-68				bus.zip = strarr[5];
-70				nameroot = insert_name(bus, nameroot);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602b90) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602c70) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-105			nameroot->left = insert_name(bus, nameroot->left);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x602d40) at answer10.c:101
-101		if (nameroot == NULL) {
-104		if (strcmp(strupr(bus.name),strupr(nameroot->name)) < 0) {
-107		else if (strcmp(strupr(bus.name),strupr(nameroot->name)) > 0) {
-108			nameroot->right = insert_name(bus, nameroot->right);
-
-Breakpoint 3, insert_name (bus=..., nameroot=0x0) at answer10.c:101
-101		if (nameroot == NULL) {
-102			return create_namenode(bus);
-
-Breakpoint 4, create_namenode (bus=...) at answer10.c:81
-81		NameNode * nameno = malloc(sizeof(NameNode));////
-82		nameno->name = strdup(bus.name);////
-83		nameno->stroot = insert_st(bus, nameno->stroot);
-
-Breakpoint 5, insert_st (bus=..., stroot=0x4f594e4143205327) at answer10.c:123
-123		if (stroot == NULL) {
-126		if (strcmp(strupr(bus.state),strupr(stroot->state)) <= 0) {
-
-Program received signal SIGSEGV, Segmentation fault.
-0x0000000000400c90 in insert_st (bus=..., stroot=0x4f594e4143205327) at answer10.c:126
-126		if (strcmp(strupr(bus.state),strupr(stroot->state)) <= 0) {
-
-Program terminated with signal SIGSEGV, Segmentation fault.
-The program no longer exists.
-The program is not being run.
-The program is not being run.
-The program is not being run.
 The program is not being run.
