@@ -12,11 +12,13 @@ typedef struct busnode {
 	char * address;
 	char * city;
 	long int reviewloc;
+	const char* reviews_path;
 } BusNode;
 
 typedef struct inode {
 	char * id;
 	long int reviewloc;
+	const char* reviews_path;
 
 	struct inode * left;
 	struct inode * right;

@@ -12,6 +12,7 @@ typedef struct busnode {
 	char * address;
 	char * city;
 	long int reviewloc;
+	const char* reviews_path; //newly added
 } BusNode;
 
 typedef struct inode {
@@ -19,6 +20,7 @@ typedef struct inode {
 	char * address;
 	char * city;
 	long int reviewloc;
+	const char* reviews_path;//newly added
 
 	struct inode * left;
 	struct inode * right;
@@ -59,6 +61,7 @@ ZipNode * create_zipnode(BusNode bus);
 IdNode * create_idnode(BusNode bus);
 IdNode * insert_id(BusNode bus, IdNode * idroot);
 
+uint32_t addreview(char * id,long int reviewloc,struct Review * *reviews, uint32_t * num_reviews, const char* reviews_path);
 void locidcount(IdNode * idroot, uint32_t * num_locations);
 void loczipcount(ZipNode * ziproot, uint32_t * num_locations);
 void loccount(StateNode * stfound, uint32_t * num_locations);
@@ -105,6 +108,7 @@ struct YelpDataBST* create_business_bst(const char* businesses_path, const char*
 				bus.state = strarr[4];
 				bus.zip = strarr[5];
 				bus.reviewloc = -1;
+				bus.reviews_path = reviews_path;
 
 				while (!feof(fpr)) {
 					if (!notf) {
@@ -145,7 +149,7 @@ struct YelpDataBST* create_business_bst(const char* businesses_path, const char*
 StateNode * searchstate(StateNode * stroot, char * state)
 {
 	if (stroot == NULL) return NULL;
-	if (strcasecmp(state,stroot->state) == 0) {printf("state found!\n"); return stroot;}
+	if (strcasecmp(state,stroot->state) == 0) {/*printf("state found!\n");*/ return stroot;}
 	if (strcasecmp(state,stroot->state) < 0) return searchstate(stroot->left, state);
 	return searchstate(stroot->right, state);
 }
@@ -153,7 +157,7 @@ StateNode * searchstate(StateNode * stroot, char * state)
 NameNode * searchname(NameNode * nameroot, char * name)
 {
 	if (nameroot == NULL) return NULL;
-	if (strcasecmp(name,nameroot->name) == 0) {printf("name found!\n");  return nameroot;}
+	if (strcasecmp(name,nameroot->name) == 0) {/*printf("name found!\n");*/  return nameroot;}
 	if (strcasecmp(name,nameroot->name) < 0) return searchname(nameroot->left, name);
 	return searchname(nameroot->right, name);
 }
@@ -182,16 +186,78 @@ void loccount(StateNode * stfound, uint32_t * num_locations)
 	loccount(stfound->right, num_locations);
 }
 
+uint32_t addreview(char * id,long int reviewloc,struct Review * * reviews, uint32_t * num_reviews, const char* reviews_path)
+{
+	FILE * fpr = NULL;
+	char * strrev = (char *) malloc(8000 * sizeof(char));
+	char * * strarr = NULL;
+	int count = 0;
+	fpr = fopen(reviews_path,"r");
+	if (!fpr) {
+		fprintf(stderr,"Failed to open file '%s'\n", reviews_path);
+		reviews = NULL;
+		return 0;
+	}
+	if (reviewloc == -1) {
+		printf("%s not found!\n",id);
+		reviews = NULL;
+		return 0;
+	}
+	fseek(fpr,reviewloc,SEEK_SET);
+	while (!feof(fpr)) {
+		fgets(strrev,8000,fpr);
+		if (!feof(fpr)) {
+			strarr = explode(strrev,"\t"); 
+			if (strcmp(id,strarr[0]) != 0) {
+				destroyStringArray(strarr, 6);
+				break;
+			}
+			count ++;
+			destroyStringArray(strarr, 6);
+		}
+	}
+	//printf("count = %d\n",count);
+	*reviews = malloc(sizeof(struct Review)*count);////
+	fseek(fpr,reviewloc,SEEK_SET);
+	int ind = 0;
+	while (!feof(fpr)) {
+		fgets(strrev,8000,fpr);
+		if (!feof(fpr)) {
+			strarr = explode(strrev,"\t");
+			if (strcmp(id,strarr[0]) != 0) {
+				destroyStringArray(strarr, 6);
+				break;
+			}
+
+			((*reviews)[ind]).text = strdup(strarr[5]);
+			//printf("%s\n",(reviews[ind]).text);
+			((*reviews)[ind]).stars = (uint8_t) atoi(strarr[1]);
+			//printf("%d\n",(uint8_t) atoi(strarr[1]));
+			//(*reviews) ++;
+			ind ++;
+			destroyStringArray(strarr, 6);
+		}
+	}
+	//may qsort here......
+	free(strrev);
+	fclose(fpr);
+
+	return (uint32_t) count;
+
+}
+
 void createlocip(IdNode * idroot, char * zip, char * state, int * ind, struct Location * locarr)
 {
 	if (idroot == NULL) return;
 	createlocip(idroot->left, zip, state, ind,locarr);
-	locarr->state = strdup(state);
-	locarr->zip_code = strdup(zip);
-	locarr->address = strdup(idroot->address);
-	locarr->city = strdup(idroot->city);
-	printf("state = %s, zip_code = %s, address = %s, city = %s\n",locarr->state, locarr->zip_code, locarr->address,locarr->city);
-	//may add review struct and num_review......
+	(locarr[*ind]).state = strdup(state);
+	(locarr[*ind]).zip_code = strdup(zip);
+	(locarr[*ind]).address = strdup(idroot->address);
+	(locarr[*ind]).city = strdup(idroot->city);
+	//printf("state = %s, zip_code = %s, address = %s, city = %s\n",locarr->state, locarr->zip_code, locarr->address,locarr->city);
+	//review struct and num_review......
+	(locarr[*ind]).num_reviews = addreview(idroot->id,idroot->reviewloc,&((locarr[*ind]).reviews),&((locarr[*ind]).num_reviews), idroot->reviews_path);
+	(*ind) ++;
 	createlocip(idroot->right, zip, state, ind,locarr);
 }
 
@@ -223,14 +289,14 @@ struct Business* get_business_reviews(struct YelpDataBST* bst, char* name, char*
 
 	namefound = searchname(bst, name);
 	//zipfound = searchzip(stfound->ziproot,zip_code);
-	
+
 	busi->name = (namefound == NULL) ? NULL : strdup(namefound->name); ////
 	if (busi->name == NULL) return NULL;
 	else {//this function need change!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		if (state == NULL) {
 			busi->num_locations = 0;
 			loccount(namefound->stroot,&(busi->num_locations));
-			printf("have %d id\n",busi->num_locations);
+			//printf("have %d id\n",busi->num_locations);
 			busi->locations = malloc(sizeof(struct Location)*(busi->num_locations));
 			int ind = 0;
 			createlocarr(namefound->stroot, busi->locations,&ind);
@@ -252,7 +318,7 @@ struct Business* get_business_reviews(struct YelpDataBST* bst, char* name, char*
 				//printf("(locarr[ind]).state = %s\n",(busi->locations[0]).state);
 			}
 		}
-		
+
 		//zipfound = searchzip(stfound->ziproot,zip_code);
 
 
@@ -302,7 +368,8 @@ IdNode * create_idnode(BusNode bus) //malloc
 	idno->id = strdup(bus.id);////
 	idno->city = strdup(bus.city);////
 	idno->address = strdup(bus.address);////
-	idno->reviewloc = bus.reviewloc; //it would be changed later !!!!!
+	idno->reviewloc = bus.reviewloc; 
+	idno->reviews_path = strdup(bus.reviews_path);////
 	idno->left = NULL;
 	idno->right = NULL;
 	return idno;
@@ -374,6 +441,16 @@ StateNode * insert_st(BusNode bus, StateNode * stroot)
 		stroot->ziproot = insert_zip(bus, stroot->ziproot);
 	}
 	return stroot;
+}
+
+void destroy_business_bst(struct YelpDataBST* bst)
+{
+	return;
+}
+
+void destroy_business_result(struct Business* b)
+{
+	return;
 }
 
 
