@@ -1,106 +1,78 @@
-==23287== Memcheck, a memory error detector
-==23287== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==23287== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==23287== Command: a.out
-==23287== Parent PID: 25069
-==23287== 
---23287-- 
---23287-- Valgrind options:
---23287--    --tool=memcheck
---23287--    --leak-check=full
---23287--    --verbose
---23287--    --log-file=memcheck.log
---23287-- Contents of /proc/version:
---23287--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
---23287-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---23287-- Page sizes: currently 4096, max supported 4096
---23287-- Valgrind library directory: /usr/lib64/valgrind
---23287-- Reading syms from /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA10/a.out
---23287-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---23287--    object doesn't have a dynamic symbol table
---23287-- Reading syms from /lib64/ld-2.12.so
---23287--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
---23287--   .. build-id is valid
---23287-- Scheduler: using generic scheduler lock implementation.
---23287-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==23287== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-23287-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
-==23287== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-23287-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
-==23287== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-23287-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
-==23287== 
-==23287== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==23287== don't want to do, unless you know exactly what you're doing,
-==23287== or are doing some strange experiment):
-==23287==   /usr/lib64/valgrind/../../bin/vgdb --pid=23287 ...command...
-==23287== 
-==23287== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==23287==   /path/to/gdb a.out
-==23287== and then give GDB the following command
-==23287==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=23287
-==23287== --pid is optional if only one valgrind process is running
-==23287== 
---23287-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---23287-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---23287-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---23287-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
---23287-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
---23287-- Reading syms from /lib64/libc-2.12.so
---23287--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
---23287--   .. build-id is valid
---23287-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---23287-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---23287-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
---23287-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
---23287-- REDIR: 0x35ff883350 (memchr) redirected to 0x4a08610 (memchr)
---23287-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
---23287-- REDIR: 0x35ff881120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---23287-- REDIR: 0x35ff9336f0 (__strlen_sse42) redirected to 0x4a07f90 (strlen)
---23287-- REDIR: 0x35ff87f630 (index) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---23287-- REDIR: 0x35ff928370 (__strchr_sse42) redirected to 0x4a07b40 (index)
---23287-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
---23287-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
---23287-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---23287-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
---23287-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
---23287-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
-==23287== 
-==23287== HEAP SUMMARY:
-==23287==     in use at exit: 8,552 bytes in 475 blocks
-==23287==   total heap usage: 1,029 allocs, 554 frees, 22,848 bytes allocated
-==23287== 
-==23287== Searching for pointers to 475 not-freed blocks
-==23287== Checked 64,936 bytes
-==23287== 
-==23287== 3 bytes in 1 blocks are definitely lost in loss record 82 of 382
-==23287==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
-==23287==    by 0x35FF880E91: strdup (strdup.c:43)
-==23287==    by 0x400C03: create_zipnode (answer10.c:109)
-==23287==    by 0x400DC6: insert_zip (answer10.c:137)
-==23287==    by 0x400BA5: create_statenode (answer10.c:99)
-==23287==    by 0x400F1D: insert_st (answer10.c:155)
-==23287==    by 0x400B14: create_namenode (answer10.c:87)
-==23287==    by 0x400C68: insert_name (answer10.c:120)
-==23287==    by 0x400D3A: insert_name (answer10.c:126)
-==23287==    by 0x400CCD: insert_name (answer10.c:123)
-==23287==    by 0x400D3A: insert_name (answer10.c:126)
-==23287==    by 0x400CCD: insert_name (answer10.c:123)
-==23287== 
-==23287== 8,549 (32 direct, 8,517 indirect) bytes in 1 blocks are definitely lost in loss record 382 of 382
-==23287==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
-==23287==    by 0x400ABB: create_namenode (answer10.c:84)
-==23287==    by 0x400C68: insert_name (answer10.c:120)
-==23287==    by 0x400A62: create_business_bst (answer10.c:73)
-==23287==    by 0x4008D2: main (main.c:43)
-==23287== 
-==23287== LEAK SUMMARY:
-==23287==    definitely lost: 35 bytes in 2 blocks
-==23287==    indirectly lost: 8,517 bytes in 473 blocks
-==23287==      possibly lost: 0 bytes in 0 blocks
-==23287==    still reachable: 0 bytes in 0 blocks
-==23287==         suppressed: 0 bytes in 0 blocks
-==23287== 
-==23287== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
---23287-- 
---23287-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---23287-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==23287== 
-==23287== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+==9854== Memcheck, a memory error detector
+==9854== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==9854== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==9854== Command: a.out Starbucks  
+==9854== Parent PID: 24899
+==9854== 
+--9854-- 
+--9854-- Valgrind options:
+--9854--    --tool=memcheck
+--9854--    --leak-check=full
+--9854--    --verbose
+--9854--    --log-file=memcheck.log
+--9854-- Contents of /proc/version:
+--9854--   Linux version 2.6.32-504.1.3.el6.x86_64 (mockbuild@x86-022.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-9) (GCC) ) #1 SMP Fri Oct 31 11:37:10 EDT 2014
+--9854-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--9854-- Page sizes: currently 4096, max supported 4096
+--9854-- Valgrind library directory: /usr/lib64/valgrind
+--9854-- Reading syms from /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA10/a.out
+--9854-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--9854--    object doesn't have a dynamic symbol table
+--9854-- Reading syms from /lib64/ld-2.12.so
+--9854--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--9854--   .. build-id is valid
+--9854-- Scheduler: using generic scheduler lock implementation.
+--9854-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==9854== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9854-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==9854== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9854-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==9854== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9854-by-zhan1442-on-ecegrid-thin1.ecn.purdue.edu
+==9854== 
+==9854== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9854== don't want to do, unless you know exactly what you're doing,
+==9854== or are doing some strange experiment):
+==9854==   /usr/lib64/valgrind/../../bin/vgdb --pid=9854 ...command...
+==9854== 
+==9854== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9854==   /path/to/gdb a.out
+==9854== and then give GDB the following command
+==9854==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=9854
+==9854== --pid is optional if only one valgrind process is running
+==9854== 
+--9854-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--9854-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--9854-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--9854-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--9854-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--9854-- Reading syms from /lib64/libc-2.12.so
+--9854--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--9854--   .. build-id is valid
+--9854-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9854-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9854-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--9854-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--9854-- REDIR: 0x35ff883350 (memchr) redirected to 0x4a08610 (memchr)
+--9854-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--9854-- REDIR: 0x35ff881120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9854-- REDIR: 0x35ff9336f0 (__strlen_sse42) redirected to 0x4a07f90 (strlen)
+--9854-- REDIR: 0x35ff87f630 (index) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9854-- REDIR: 0x35ff928370 (__strchr_sse42) redirected to 0x4a07b40 (index)
+--9854-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9854-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--9854-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+--9854-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--9854-- REDIR: 0x35ff92b4c0 (__strcasecmp_sse42) redirected to 0x4a0aae0 (strcasecmp)
+--9854-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--9854-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+==9854== 
+==9854== HEAP SUMMARY:
+==9854==     in use at exit: 0 bytes in 0 blocks
+==9854==   total heap usage: 18,771 allocs, 18,771 frees, 1,871,271 bytes allocated
+==9854== 
+==9854== All heap blocks were freed -- no leaks are possible
+==9854== 
+==9854== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--9854-- 
+--9854-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--9854-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==9854== 
+==9854== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

@@ -20,7 +20,7 @@ typedef struct inode {
 	char * address;
 	char * city;
 	long int reviewloc;
-	const char* reviews_path;//newly added
+	char* reviews_path;//newly added
 
 	struct inode * left;
 	struct inode * right;
@@ -443,13 +443,80 @@ StateNode * insert_st(BusNode bus, StateNode * stroot)
 	return stroot;
 }
 
+void destroy_business_id(IdNode* idroot)
+{
+	if (idroot == NULL) return;
+	destroy_business_id(idroot->left);
+	destroy_business_id(idroot->right);
+	free(idroot->id);
+	free(idroot->address);
+	free(idroot->city);
+	free(idroot->reviews_path);
+	free(idroot);
+}
+
+void destroy_business_zip(ZipNode* ziproot)
+{
+	if (ziproot == NULL) return;
+	destroy_business_zip(ziproot->left);
+	destroy_business_zip(ziproot->right);	
+	free(ziproot->zip);
+	destroy_business_id(ziproot->idroot);
+	free(ziproot);
+}
+
+void destroy_business_st(StateNode* stroot)
+{
+	if (stroot == NULL) return;
+	destroy_business_st(stroot->left);
+	destroy_business_st(stroot->right);
+	free(stroot->state);
+	destroy_business_zip(stroot->ziproot);
+	free(stroot);
+}
+
 void destroy_business_bst(struct YelpDataBST* bst)
 {
+	if (bst == NULL) return;
+	destroy_business_bst(bst->left);
+	destroy_business_bst(bst->right);
+	free(bst->name);
+	destroy_business_st(bst->stroot);
+	free(bst);
+
 	return;
+}
+
+void destroy_loc(struct Location* locations, uint32_t num_locations);
+void destroy_rev(struct Review* reviews, uint32_t num_reviews);
+
+void destroy_rev(struct Review* reviews, uint32_t num_reviews)
+{
+	int i;
+	for (i = 0; i < num_reviews; i++) {
+		free((reviews[i]).text);
+	}
+	free(reviews);
+}
+
+void destroy_loc(struct Location* locations, uint32_t num_locations)
+{
+	int i;
+	for (i = 0; i < num_locations; i++) {
+		free((locations[i]).address);
+		free((locations[i]).city);
+		free((locations[i]).state);
+		free((locations[i]).zip_code);
+		destroy_rev((locations[i]).reviews, (locations[i]).num_reviews);
+	}
+	free(locations);
 }
 
 void destroy_business_result(struct Business* b)
 {
+	free(b->name);
+	destroy_loc(b->locations, b->num_locations);
+	free(b);
 	return;
 }
 

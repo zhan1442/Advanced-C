@@ -1,106 +1,30 @@
-Breakpoint 1 at 0x4014f8: file answer10.c, line 200.
-Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA10/a.out "Boston Cleaners" NV 89135
+Breakpoint 1 at 0x402661: file answer10.c, line 477.
+Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA10/a.out "Boston Cleaners" "" ""
 
-Breakpoint 1, addreview (id=0x606e50 "0", reviewloc=0, reviews=0x609e10, num_reviews=0x606be8, 
-    reviews_path=0x606ec0 "/home/shay/a/ece264p0/share/yelp_data/reviews.short.tsv") at answer10.c:201
-warning: Source file is more recent than executable.
-201		if (reviewloc == -1) {
-206		fseek(fpr,reviewloc,SEEK_SET);
-207		while (!feof(fpr)) {
-208			fgets(strrev,8000,fpr);
-209			if (!feof(fpr)) {
-210				strarr = explode(strrev,"\t"); 
-211				if (strcmp(id,strarr[0]) != 0) {
-215				count ++;
-216				destroyStringArray(strarr, 6);
-207		while (!feof(fpr)) {
-208			fgets(strrev,8000,fpr);
-209			if (!feof(fpr)) {
-210				strarr = explode(strrev,"\t"); 
-211				if (strcmp(id,strarr[0]) != 0) {
-215				count ++;
-216				destroyStringArray(strarr, 6);
-207		while (!feof(fpr)) {
-208			fgets(strrev,8000,fpr);
-209			if (!feof(fpr)) {
-210				strarr = explode(strrev,"\t"); 
-211				if (strcmp(id,strarr[0]) != 0) {
-215				count ++;
-216				destroyStringArray(strarr, 6);
-207		while (!feof(fpr)) {
-208			fgets(strrev,8000,fpr);
-209			if (!feof(fpr)) {
-210				strarr = explode(strrev,"\t"); 
-211				if (strcmp(id,strarr[0]) != 0) {
-215				count ++;
-216				destroyStringArray(strarr, 6);
-207		while (!feof(fpr)) {
-208			fgets(strrev,8000,fpr);
-209			if (!feof(fpr)) {
-210				strarr = explode(strrev,"\t"); 
-211				if (strcmp(id,strarr[0]) != 0) {
-212					destroyStringArray(strarr, 6);
-213					break;
-219		printf("count = %d\n",count);
-220		reviews = malloc(sizeof(struct Review)*count);////
-221		fseek(fpr,reviewloc,SEEK_SET);
-222		int ind = 0;
-223		while (!feof(fpr)) {
-224			fgets(strrev,8000,fpr);
-225			if (!feof(fpr)) {
-226				strarr = explode(strrev,"\t");
-227				if (strcmp(id,strarr[0]) != 0) {
-232				(reviews[ind]).text = strdup(strarr[5]);
-234				(reviews[ind]).stars = (uint8_t) atoi(strarr[1]);
-237				ind ++;
-238				destroyStringArray(strarr, 6);
-223		while (!feof(fpr)) {
-224			fgets(strrev,8000,fpr);
-225			if (!feof(fpr)) {
-226				strarr = explode(strrev,"\t");
-227				if (strcmp(id,strarr[0]) != 0) {
-232				(reviews[ind]).text = strdup(strarr[5]);
-234				(reviews[ind]).stars = (uint8_t) atoi(strarr[1]);
-237				ind ++;
-238				destroyStringArray(strarr, 6);
-223		while (!feof(fpr)) {
-224			fgets(strrev,8000,fpr);
-225			if (!feof(fpr)) {
-226				strarr = explode(strrev,"\t");
-227				if (strcmp(id,strarr[0]) != 0) {
-232				(reviews[ind]).text = strdup(strarr[5]);
-234				(reviews[ind]).stars = (uint8_t) atoi(strarr[1]);
-237				ind ++;
-238				destroyStringArray(strarr, 6);
-223		while (!feof(fpr)) {
-224			fgets(strrev,8000,fpr);
-225			if (!feof(fpr)) {
-226				strarr = explode(strrev,"\t");
-227				if (strcmp(id,strarr[0]) != 0) {
-232				(reviews[ind]).text = strdup(strarr[5]);
-234				(reviews[ind]).stars = (uint8_t) atoi(strarr[1]);
-237				ind ++;
-238				destroyStringArray(strarr, 6);
-223		while (!feof(fpr)) {
-224			fgets(strrev,8000,fpr);
-225			if (!feof(fpr)) {
-226				strarr = explode(strrev,"\t");
-227				if (strcmp(id,strarr[0]) != 0) {
-228					destroyStringArray(strarr, 6);
-229					break;
-242		free(strrev);
-243		fclose(fpr);
-245		return (uint32_t) count;
-247	}
-createlocip (idroot=0x606d20, zip=0x606e30 "89135", state=0x606de0 "NV", ind=0x7fffffffe1b0, locarr=0x606bc0) at answer10.c:260
-260		printf("%s",locarr->reviews->text);
+Breakpoint 1, destroy_business_bst (bst=0x606d60) at answer10.c:477
+477		destroy_business_bst(bst->left);
+
+Breakpoint 1, destroy_business_bst (bst=0x607be0) at answer10.c:477
+477		destroy_business_bst(bst->left);
+
+Breakpoint 1, destroy_business_bst (bst=0x60a110) at answer10.c:477
+477		destroy_business_bst(bst->left);
+
+Breakpoint 1, destroy_business_bst (bst=0x60bba0) at answer10.c:477
+477		destroy_business_bst(bst->left);
+
+Breakpoint 1, destroy_business_bst (bst=0x60c310) at answer10.c:477
+477		destroy_business_bst(bst->left);
+
+Breakpoint 1, destroy_business_bst (bst=0x0) at answer10.c:477
+477		destroy_business_bst(bst->left);
 
 Program received signal SIGSEGV, Segmentation fault.
-0x00000035ff847e2c in _IO_vfprintf_internal (s=<value optimized out>, format=<value optimized out>, ap=<value optimized out>) at vfprintf.c:1641
-1641		  process_string_arg (((struct printf_spec *) NULL));
+0x0000000000402665 in destroy_business_bst (bst=0x0) at answer10.c:477
+477		destroy_business_bst(bst->left);
 
 Program terminated with signal SIGSEGV, Segmentation fault.
 The program no longer exists.
-The program is not being run.
-The program is not being run.
-The program is not being run.
+Hangup detected on fd 0
+Error detected on fd 0
+error detected on stdin
