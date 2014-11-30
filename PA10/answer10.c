@@ -99,7 +99,7 @@ struct YelpDataBST* create_business_bst(const char* businesses_path, const char*
 		int loc = -1;
 		while (!feof(fp)) {
 			fgets(str,2000,fp);
-			if (!feof(fp)) {
+			//if (!feof(fp)) { ///////don't need that!!!
 				strarr = explode(str,"\t");
 				bus.id = strarr[0];
 				bus.name = strarr[1];
@@ -115,7 +115,6 @@ struct YelpDataBST* create_business_bst(const char* businesses_path, const char*
 						loc = ftell(fpr);
 						fgets(strrev,8000,fpr);
 					}
-					if (!feof(fpr)) {
 						if (!notf) strarrrev = explode(strrev,"\t");
 						//printf("bus.id = %s, strarrrev[0] = %s\n",bus.id,strarrrev[0]);
 						if (strcmp(bus.id,strarrrev[0]) == 0) {
@@ -126,17 +125,16 @@ struct YelpDataBST* create_business_bst(const char* businesses_path, const char*
 							break;
 						}
 						else if (atoi(bus.id) < atoi(strarrrev[0])) { 
-							printf("id = %s strarrrev[0] = %s review not found!\n",bus.id,strarrrev[0]);
+							//printf("id = %s strarrrev[0] = %s review not found!\n",bus.id,strarrrev[0]);
 							notf = 1;
 							break;
 						}
 						//printf("id = %s strarrrev[0] = %s \n",bus.id,strarrrev[0]);
 						destroyStringArray(strarrrev, 6);
-					}
 				}
 				nameroot = insert_name(bus, nameroot);
 				destroyStringArray(strarr, 7);
-			}
+			//}
 		}
 		free(str);
 		free(strrev);
@@ -185,6 +183,43 @@ void loccount(StateNode * stfound, uint32_t * num_locations)
 	loczipcount(stfound->ziproot, num_locations);
 	loccount(stfound->right, num_locations);
 }
+int compar_rev(const void * arg1, const void * arg2);
+int compar_rev(const void * arg1, const void * arg2)
+{
+	const struct Review* ptr1 = (const struct Review*) arg1;
+	const struct Review* ptr2 = (const struct Review*) arg2;
+	const uint8_t stars1 =  ptr1->stars;
+	const uint8_t stars2 =  ptr2->stars;
+	if (stars1 > stars2) return -1;
+	else if (stars1 < stars2) return 1;
+	else {
+		const char * str1 = ptr1->text;
+		const char * str2 = ptr2->text;
+		return strcasecmp(str1,str2);
+	}
+}
+
+int compar_loc(const void * arg1, const void * arg2);
+int compar_loc(const void * arg1, const void * arg2)
+{
+	int result;
+	const struct Location* ptr1 = (const struct Location*) arg1;
+	const struct Location* ptr2 = (const struct Location*) arg2;
+	const char * state1 = ptr1->state;
+	const char * state2 = ptr2->state;
+	result = strcasecmp(state1,state2);
+	if (result == 0) {
+		const char * city1 = ptr1->city;
+		const char * city2 = ptr2->city;
+		result = strcasecmp(city1,city2);
+		if (result == 0) {
+			const char * address1 = ptr1->address;
+			const char * address2 = ptr2->address;
+			result = strcasecmp(address1,address2);
+		}
+	}
+	return result;
+}
 
 uint32_t addreview(char * id,long int reviewloc,struct Review * * reviews, uint32_t * num_reviews, const char* reviews_path)
 {
@@ -206,7 +241,6 @@ uint32_t addreview(char * id,long int reviewloc,struct Review * * reviews, uint3
 	fseek(fpr,reviewloc,SEEK_SET);
 	while (!feof(fpr)) {
 		fgets(strrev,8000,fpr);
-		if (!feof(fpr)) {
 			strarr = explode(strrev,"\t"); 
 			if (strcmp(id,strarr[0]) != 0) {
 				destroyStringArray(strarr, 6);
@@ -214,7 +248,6 @@ uint32_t addreview(char * id,long int reviewloc,struct Review * * reviews, uint3
 			}
 			count ++;
 			destroyStringArray(strarr, 6);
-		}
 	}
 	//printf("count = %d\n",count);
 	*reviews = malloc(sizeof(struct Review)*count);////
@@ -222,10 +255,9 @@ uint32_t addreview(char * id,long int reviewloc,struct Review * * reviews, uint3
 	int ind = 0;
 	while (!feof(fpr)) {
 		fgets(strrev,8000,fpr);
-		if (!feof(fpr)) {
-			strarr = explode(strrev,"\t");
+			strarr = explode(strrev,"\t\n");
 			if (strcmp(id,strarr[0]) != 0) {
-				destroyStringArray(strarr, 6);
+				destroyStringArray(strarr, 7);
 				break;
 			}
 
@@ -235,10 +267,10 @@ uint32_t addreview(char * id,long int reviewloc,struct Review * * reviews, uint3
 			//printf("%d\n",(uint8_t) atoi(strarr[1]));
 			//(*reviews) ++;
 			ind ++;
-			destroyStringArray(strarr, 6);
-		}
+			destroyStringArray(strarr, 7);
 	}
 	//may qsort here......
+	qsort(&((*reviews)[0]),(int) count,sizeof(struct Review),compar_rev);
 	free(strrev);
 	fclose(fpr);
 
@@ -276,7 +308,7 @@ void createlocarr(StateNode * stfound, struct Location * locarr, int * ind)
 	//(locarr[ind]).state = strdup(stfound->state);////
 	//printf("(locarr[ind]).state = %s\n",(locarr[ind]).state);
 	createloczp(stfound->ziproot,stfound->state,ind,locarr);
-	//may qsort city 
+	
 	createlocarr(stfound->right, locarr,ind);	
 }
 
@@ -319,7 +351,7 @@ struct Business* get_business_reviews(struct YelpDataBST* bst, char* name, char*
 			}
 		}
 
-		//zipfound = searchzip(stfound->ziproot,zip_code);
+		qsort(&(busi->locations[0]),busi->num_locations,sizeof(struct Location),compar_loc);
 
 
 	}

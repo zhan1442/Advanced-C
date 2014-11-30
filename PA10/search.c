@@ -3,10 +3,10 @@
 #include <string.h>
 #include "answer10.h"
 
-//const char businesses_path[] = "/home/shay/a/ece264p0/share/yelp_data/businesses.tsv";
-//const char reviews_path[] = "/home/shay/a/ece264p0/share/yelp_data/reviews.tsv";
-const char businesses_path[] = "/home/shay/a/ece264p0/share/yelp_data/businesses.short.tsv";
-const char reviews_path[] = "/home/shay/a/ece264p0/share/yelp_data/reviews.short.tsv";
+const char businesses_path[] = "/home/shay/a/ece264p0/share/yelp_data/businesses.tsv";
+const char reviews_path[] = "/home/shay/a/ece264p0/share/yelp_data/reviews.tsv";
+//const char businesses_path[] = "/home/shay/a/ece264p0/share/yelp_data/businesses.short.tsv";
+//const char reviews_path[] = "/home/shay/a/ece264p0/share/yelp_data/reviews.short.tsv";
 
 int main(int argc, char *argv[]) {
 
