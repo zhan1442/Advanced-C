@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/resource.h>
 #include "answer10.h"
 
 const char businesses_path[] = "/home/shay/a/ece264p0/share/yelp_data/businesses.tsv";
@@ -87,7 +88,9 @@ int main(int argc, char *argv[]) {
 	printf("SUMMARY:  %d locations (%d chars),  %d reviews (%d chars),  %.2f stars avg\n",
 		num_locations, num_address_chars, num_reviews, num_review_chars, avg_stars);
 	printf("================================================================================\n");
-
+	//struct rusage usage;
+	//getrusage(RUSAGE_SELF,&usage);
+	//printf("\nmemset = %ld\n",usage.ru_maxrss);
 	// Destroy (free) the BST and 
 	destroy_business_bst(bst);
 
