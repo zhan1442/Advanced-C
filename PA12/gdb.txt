@@ -1,0 +1,30 @@
+Breakpoint 1 at 0x400604: file answer12.c, line 8.
+Starting program: /home/shay/a/zhan1442/ece264/solution/ECE264F2014/PA12/a.out 0
+
+Breakpoint 1, alphaTou128 (str=0x7fffffffe673 "0") at answer12.c:8
+8		if (str == NULL) return 0;
+9		uint128 x = 0;
+10		int i = 0;
+11		int n = strlen(str);
+12		while (str[i] == ' ') i ++;
+13		for (; i < n; i ++) {
+14			if (str[i] < 58 && str[i] > 46) {
+15				x *= 10;
+16				x += (uint128) (str[i] - '0');
+14			if (str[i] < 58 && str[i] > 46) {
+13		for (; i < n; i ++) {
+22		return x;
+23	}
+main (argc=2, argv=0x7fffffffe3d8) at a.c:9
+9		 char * str = u128ToString(x);
+10		 printf("%s\n",str);
+11		 free(str);
+
+Program received signal SIGABRT, Aborted.
+0x00000035ff832625 in raise (sig=6) at ../nptl/sysdeps/unix/sysv/linux/raise.c:64
+64	  return INLINE_SYSCALL (tgkill, 3, pid, selftid, sig);
+A debugging session is active.
+
+	Inferior 1 [process 13602] will be killed.
+
+Quit anyway? (y or n) 
