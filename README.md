@@ -4,6 +4,16 @@ ECE 26400 - Advanced C Programming
 Continuation of a first programming course. Topics include files, structures, pointers, and the proper use of dynamic data structures. 
 
 
+Learning Objectives:
+A student who successfully fulfills the course requirements will have demonstrated:
+
+  the ability to read and write C programs that uses files.
+  the ability to read and write C programs that use structures .
+  the ability to read and write C programs that use dynamic data structures.
+  the ability to read and write C programs that use recursion.
+
+
+
 Weeks 	Topic
 1 	Basic machine organization and program execution
 
